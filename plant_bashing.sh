@@ -23,7 +23,7 @@ if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then
 elif [[ "$answer" == "no" || "$answer" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
-
+	exit
 else 
 	echo "Please try again, and only use 'yes' or 'no'"
 	exit
@@ -41,8 +41,10 @@ if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then
 elif [[ "$answer2" == "no" || "$answer2" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer3" == "yes" || "$answer3" == "Yes" ]]; then 
@@ -57,8 +59,10 @@ if [[ "$answer3" == "yes" || "$answer3" == "Yes" ]]; then
 elif [[ "$answer3" == "no" || "$answer3" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then 
@@ -73,8 +77,10 @@ if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then
 elif [[ "$answer4" == "no" || "$answer4" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer5" == "yes" || "$answer5" == "Yes" ]]; then 
@@ -89,8 +95,10 @@ if [[ "$answer5" == "yes" || "$answer5" == "Yes" ]]; then
 elif [[ "$answer5" == "no" || "$answer5" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer6" == "yes" || "$answer6" == "Yes" ]]; then 
@@ -105,8 +113,10 @@ if [[ "$answer6" == "yes" || "$answer6" == "Yes" ]]; then
 elif [[ "$answer6" == "no" || "$answer6" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer7" == "yes" || "$answer7" == "Yes" ]]; then 
@@ -121,8 +131,10 @@ if [[ "$answer7" == "yes" || "$answer7" == "Yes" ]]; then
 elif [[ "$answer7" == "no" || "$answer7" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer8" == "yes" || "$answer8" == "Yes" ]]; then 
@@ -137,8 +149,10 @@ if [[ "$answer8" == "yes" || "$answer8" == "Yes" ]]; then
 elif [[ "$answer8" == "no" || "$answer8" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer9" == "yes" || "$answer9" == "Yes" ]]; then 
@@ -153,8 +167,10 @@ if [[ "$answer9" == "yes" || "$answer9" == "Yes" ]]; then
 elif [[ "$answer9" == "no" || "$answer9" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer10" == "yes" || "$answer10" == "Yes" ]]; then 
@@ -169,8 +185,10 @@ if [[ "$answer10" == "yes" || "$answer10" == "Yes" ]]; then
 elif [[ "$answer10" == "no" || "$answer10" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer11" == "yes" || "$answer11" == "Yes" ]]; then 
@@ -185,8 +203,10 @@ if [[ "$answer11" == "yes" || "$answer11" == "Yes" ]]; then
 elif [[ "$answer11" == "no" || "$answer11" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer12" == "yes" || "$answer12" == "Yes" ]]; then 
@@ -201,8 +221,10 @@ if [[ "$answer12" == "yes" || "$answer12" == "Yes" ]]; then
 elif [[ "$answer12" == "no" || "$answer12" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer13" == "yes" || "$answer13" == "Yes" ]]; then 
@@ -217,8 +239,10 @@ if [[ "$answer13" == "yes" || "$answer13" == "Yes" ]]; then
 elif [[ "$answer13" == "no" || "$answer13" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer14" == "yes" || "$answer14" == "Yes" ]]; then 
@@ -233,8 +257,10 @@ if [[ "$answer14" == "yes" || "$answer14" == "Yes" ]]; then
 elif [[ "$answer14" == "no" || "$answer14" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer15" == "yes" || "$answer15" == "Yes" ]]; then 
@@ -249,8 +275,10 @@ if [[ "$answer15" == "yes" || "$answer15" == "Yes" ]]; then
 elif [[ "$answer15" == "no" || "$answer15" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer16" == "yes" || "$answer16" == "Yes" ]]; then 
@@ -265,8 +293,10 @@ if [[ "$answer16" == "yes" || "$answer16" == "Yes" ]]; then
 elif [[ "$answer16" == "no" || "$answer16" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer17" == "yes" || "$answer17" == "Yes" ]]; then 
@@ -281,8 +311,10 @@ if [[ "$answer17" == "yes" || "$answer17" == "Yes" ]]; then
 elif [[ "$answer17" == "no" || "$answer17" == "No" ]];then
 	sleep 2
 	echo "Alright, see you later neighbor!"
+	exit
 else
 	echo "Please try again, and only use 'yes' or 'no'"
+	exit
 fi
 
 if [[ "$answer18" == "yes" || "$answer18" == "Yes" ]]; then 

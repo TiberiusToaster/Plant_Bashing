@@ -326,4 +326,7 @@ if [[ "$answer18" == "yes" || "$answer18" == "Yes" ]]; then
 	echo "I think I can take care of it from here neighbor."
 	sleep 2
 	echo "Thanks for the help, see you later!"
+	sleep 1
+	echo "Would you like to play again?"
+	read ""
 fi

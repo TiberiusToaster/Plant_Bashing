@@ -1,5 +1,11 @@
 #!/bin/bash
 
+
+
+
+
+
+
 echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
 
 read name
@@ -336,3 +342,4 @@ else
 	exit
 fi
 
+if

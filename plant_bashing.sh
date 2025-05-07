@@ -327,6 +327,12 @@ if [[ "$answer18" == "yes" || "$answer18" == "Yes" ]]; then
 	sleep 2
 	echo "Thanks for the help, see you later!"
 	sleep 1
-	echo "Would you like to play again?"
-	read ""
+	echo "Would you like to play again? (Yes/No)"
+	read playanswer
+
+else
+	sleep 2
+	echo "Game closed"
+	exit
 fi
+

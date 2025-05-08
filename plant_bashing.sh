@@ -1,11 +1,11 @@
 #!/bin/bash
 
 
+is_active="true"
 
 
 
-
-
+while [ $is_active == "true" ]
 echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
 
 read name
@@ -343,3 +343,7 @@ else
 fi
 
 if
+
+if [[ "$playanswer" == "yes" || "$playanswer" == "Yes" ]]
+	sleep 1
+	

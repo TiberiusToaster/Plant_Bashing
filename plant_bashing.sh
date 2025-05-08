@@ -343,7 +343,7 @@ while [ $is_active == "true" ]; do
 	fi
 done
 
-if [[ "$playanswer" == "yes" || "$playanswer" == "Yes" ]]
+if [[ "$playanswer" == "yes" || "$playanswer" == "Yes" ]]; then
 	sleep 1
 	echo "Reloading game..."
 	sleep 2

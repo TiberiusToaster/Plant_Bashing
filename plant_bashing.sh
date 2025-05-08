@@ -5,7 +5,7 @@ is_active="true"
 
 
 
-while [ $is_active == "true" ]
+while [ $is_active == "true" ]; do
 	echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
 
 	read name
@@ -313,7 +313,8 @@ while [ $is_active == "true" ]
 		sleep 2
 		echo "Do you want to wait another day?"
 		read answer18
-
+		sleep 3
+		is_active=false
 	elif [[ "$answer17" == "no" || "$answer17" == "No" ]];then
 		sleep 2
 		echo "Alright, see you later neighbor!"
@@ -322,10 +323,10 @@ while [ $is_active == "true" ]
 		echo "Please try again, and only use 'yes' or 'no'"
 		exit
 	fi
-fi
+done
+
 
 if [[ "$answer18" == "yes" || "$answer18" == "Yes" ]]; then 
-	sleep 2
 	echo "It's day 21, your plant has grown 2 cm higher and grown 2 more leaves!"
 	sleep 2
 	echo "Your plant is now 30 cm high and has 30 leaves."
@@ -343,8 +344,9 @@ else
 	exit
 fi
 
-if
-
 if [[ "$playanswer" == "yes" || "$playanswer" == "Yes" ]]
 	sleep 1
-	
+	echo "Reloading game..."
+	sleep 2
+	is_active = true
+fi

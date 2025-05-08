@@ -72,11 +72,11 @@ while [ $is_active == "true" ]; do
 	fi
 
 	if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then 
-		sleep 2
+		sleep 1
 		echo "It's day 7, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 2
+		sleep 1
 		echo "Your plant is now 2 cm high and has 2 leaves."
-		sleep 2
+		sleep 1
 		echo "Do you want to wait another day?"
 		read answer5
 
@@ -90,11 +90,11 @@ while [ $is_active == "true" ]; do
 	fi
 
 	if [[ "$answer5" == "yes" || "$answer5" == "Yes" ]]; then 
-		sleep 2
+		sleep 1
 		echo "It's day 8, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 2
+		sleep 1
 		echo "Your plant is now 4 cm high and has 4 leaves."
-		sleep 2
+		sleep 1
 		echo "Do you want to wait another day?"
 		read answer6
 
@@ -108,11 +108,11 @@ while [ $is_active == "true" ]; do
 	fi
 
 	if [[ "$answer6" == "yes" || "$answer6" == "Yes" ]]; then 
-		sleep 2
+		sleep 1
 		echo "Its day 9, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 2
+		sleep 1
 		echo "Your plant is now 6 cm high and has 6 leaves."
-		sleep 2
+		sleep 1
 		echo "Do you want to wait another day?"
 		read answer7
 
@@ -126,11 +126,11 @@ while [ $is_active == "true" ]; do
 	fi
 
 	if [[ "$answer7" == "yes" || "$answer7" == "Yes" ]]; then 
-		sleep 2
+		sleep 1
 		echo "It's day 10, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 2
+		sleep 1
 		echo "Your plant is now 8 cm high and has 8 leaves."
-		sleep 2
+		sleep 1
 		echo "Do you want to wait another day?"
 		read answer8
 
@@ -144,11 +144,11 @@ while [ $is_active == "true" ]; do
 	fi
 
 	if [[ "$answer8" == "yes" || "$answer8" == "Yes" ]]; then 
-		sleep 2
+		sleep 1
 		echo "It's day 11, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 2
+		sleep 1
 		echo "Your plant is now 10 cm high and has 10 leaves."
-		sleep 2
+		sleep 1
 		echo "Do you want to wait another day?"
 		read answer9
 
@@ -162,11 +162,11 @@ while [ $is_active == "true" ]; do
 	fi
 
 	if [[ "$answer9" == "yes" || "$answer9" == "Yes" ]]; then 
-		sleep 2
+		sleep 1
 		echo "It's day 12, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 2
+		sleep 1
 		echo "Your plant is now 12 cm high and has 12 leaves."
-		sleep 2
+		sleep 1
 		echo "Do you want to wait another day?"
 		read answer10
 
@@ -180,11 +180,11 @@ while [ $is_active == "true" ]; do
 	fi
 
 	if [[ "$answer10" == "yes" || "$answer10" == "Yes" ]]; then 
-		sleep 2
+		sleep 1
 		echo "It's day 13, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 2
+		sleep 1
 		echo "Your plant is now 14 cm high and has 14 leaves."
-		sleep 2
+		sleep 1
 		echo "Do you want to wait another day?"
 		read answer11
 
@@ -198,11 +198,11 @@ while [ $is_active == "true" ]; do
 	fi
 
 	if [[ "$answer11" == "yes" || "$answer11" == "Yes" ]]; then 
-		sleep 2
+		sleep 1
 		echo "It's day 14, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 2
+		sleep 1
 		echo "Your plant is now 16 cm high and has 16 leaves."
-		sleep 2
+		sleep 1
 		echo "Do you want to wait another day?"
 		read answer12
 
@@ -216,11 +216,11 @@ while [ $is_active == "true" ]; do
 	fi
 
 	if [[ "$answer12" == "yes" || "$answer12" == "Yes" ]]; then 
-		sleep 2
+		sleep 1
 		echo "It's day 15, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 2
+		sleep 1
 		echo "Your plant is now 18 cm high and has 18 leaves."
-		sleep 2
+		sleep 1
 		echo "Do you want to wait another day?"
 		read answer13
 
@@ -234,11 +234,11 @@ while [ $is_active == "true" ]; do
 	fi
 
 	if [[ "$answer13" == "yes" || "$answer13" == "Yes" ]]; then 
-		sleep 2
+		sleep 1
 		echo "It's day 16, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 2
+		sleep 1
 		echo "Your plant is now 20 cm high and has 20 leaves."
-		sleep 2
+		sleep 1
 		echo "Do you want to wait another day?"
 		read answer14
 
@@ -252,11 +252,11 @@ while [ $is_active == "true" ]; do
 	fi
 
 	if [[ "$answer14" == "yes" || "$answer14" == "Yes" ]]; then 
-		sleep 2
+		sleep 1
 		echo "It's day 17, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 2
+		sleep 1
 		echo "Your plant is now 22 cm high and has 22 leaves."
-		sleep 2
+		sleep 1
 		echo "Do you want to wait another day?"
 		read answer15
 
@@ -270,11 +270,11 @@ while [ $is_active == "true" ]; do
 	fi
 
 	if [[ "$answer15" == "yes" || "$answer15" == "Yes" ]]; then 
-		sleep 2
+		sleep 1
 		echo "It's day 18, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 2
+		sleep 1
 		echo "Your plant is now 24 cm high and has 24 leaves."
-		sleep 2
+		sleep 1
 		echo "Do you want to wait another day?"
 		read answer16
 
@@ -288,11 +288,11 @@ while [ $is_active == "true" ]; do
 	fi
 
 	if [[ "$answer16" == "yes" || "$answer16" == "Yes" ]]; then 
-		sleep 2
+		sleep 1
 		echo "It's day 19, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 2
+		sleep 1
 		echo "Your plant is now 26 cm high and has 26 leaves."
-		sleep 2
+		sleep 1
 		echo "Do you want to wait another day?"
 		read answer17
 
@@ -306,11 +306,11 @@ while [ $is_active == "true" ]; do
 	fi
 
 	if [[ "$answer17" == "yes" || "$answer17" == "Yes" ]]; then 
-		sleep 2
+		sleep 1
 		echo "It's day 20, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 2
+		sleep 1
 		echo "Your plant is now 28 cm high and has 28 leaves."
-		sleep 2
+		sleep 1
 		echo "Do you want to wait another day?"
 		read answer18
 	elif [[ "$answer17" == "no" || "$answer17" == "No" ]];then
@@ -348,6 +348,7 @@ if [[ "$playanswer" == "yes" || "$playanswer" == "Yes" ]]
 	echo "Reloading game..."
 	sleep 2
 	is_active=true
+
 else
 	sleep 2
 	echo "Game closed"

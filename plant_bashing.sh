@@ -313,8 +313,6 @@ while [ $is_active == "true" ]; do
 		sleep 2
 		echo "Do you want to wait another day?"
 		read answer18
-		sleep 3
-		is_active=false
 	elif [[ "$answer17" == "no" || "$answer17" == "No" ]];then
 		sleep 2
 		echo "Alright, see you later neighbor!"
@@ -323,30 +321,35 @@ while [ $is_active == "true" ]; do
 		echo "Please try again, and only use 'yes' or 'no'"
 		exit
 	fi
+
+	if [[ "$answer18" == "yes" || "$answer18" == "Yes" ]]; then 
+		echo "It's day 21, your plant has grown 2 cm higher and grown 2 more leaves!"
+		sleep 2
+		echo "Your plant is now 30 cm high and has 30 leaves."
+		sleep 2
+		echo "I think I can take care of it from here neighbor."
+		sleep 2
+		echo "Thanks for the help, see you later!"
+		sleep 1
+		echo "Would you like to play again? (Yes/No)"
+		read playanswer
+		sleep 3
+		is_active=false
+
+	else
+		sleep 2
+		echo "Game closed"
+		exit
+	fi
 done
-
-
-if [[ "$answer18" == "yes" || "$answer18" == "Yes" ]]; then 
-	echo "It's day 21, your plant has grown 2 cm higher and grown 2 more leaves!"
-	sleep 2
-	echo "Your plant is now 30 cm high and has 30 leaves."
-	sleep 2
-	echo "I think I can take care of it from here neighbor."
-	sleep 2
-	echo "Thanks for the help, see you later!"
-	sleep 1
-	echo "Would you like to play again? (Yes/No)"
-	read playanswer
-
-else
-	sleep 2
-	echo "Game closed"
-	exit
-fi
 
 if [[ "$playanswer" == "yes" || "$playanswer" == "Yes" ]]
 	sleep 1
 	echo "Reloading game..."
 	sleep 2
-	is_active = true
+	is_active=true
+else
+	sleep 2
+	echo "Game closed"
+	exit
 fi

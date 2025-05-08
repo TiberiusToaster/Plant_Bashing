@@ -338,7 +338,7 @@ while [ $is_active == "true" ]; do
 
 	else
 		sleep 2
-		echo "Game closed"
+		echo "Lright see you later neighbor!"
 		exit
 	fi
 done

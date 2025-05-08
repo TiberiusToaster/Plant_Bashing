@@ -1,11 +1,10 @@
 #!/bin/bash
 
 
-is_active="true"
+is_active=true
 
 
-
-while [ $is_active == "true" ]; do
+while [ $is_active == true ]; do
 	echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
 
 	read name
@@ -334,23 +333,23 @@ while [ $is_active == "true" ]; do
 		echo "Would you like to play again? (Yes/No)"
 		read playanswer
 		sleep 3
-		is_active=false
+		
+		if [[ "$playanswer" == "yes" || "$playanswer" == "Yes" ]]; then
+			sleep 1
+			echo "Reloading game..."
+			sleep 2
+			is_active=true
+
+		else
+			sleep 2
+			echo "Game closed"
+			is_active=false
+			exit
+		fi
 
 	else
 		sleep 2
-		echo "Lright see you later neighbor!"
+		echo "Alright see you later neighbor!"
 		exit
 	fi
 done
-
-if [[ "$playanswer" == "yes" || "$playanswer" == "Yes" ]]; then
-	sleep 1
-	echo "Reloading game..."
-	sleep 2
-	is_active=true
-
-else
-	sleep 2
-	echo "Game closed"
-	exit
-fi

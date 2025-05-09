@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 plant_height=2
 plant_leaves=2
 day_count=7
@@ -72,23 +73,30 @@ while [ $is_active == true ]; do
 		exit
 	fi
 
-	if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then 
-		sleep 1
-		echo "It's day "$day_count", your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 1
-		echo "Your plant is now "$plant_height" cm high and has "$plant_leaves" leaves."
-		sleep 1
-		echo "Do you want to wait another day?"
-		read answer5
 
-	elif [[ "$answer4" == "no" || "$answer4" == "No" ]];then
-		sleep 2
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
+
+	while [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; do
+		if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then 
+			sleep 1
+			echo "It's day "$day_count", your plant has grown 2 cm higher and grown 2 more leaves!"
+			sleep 1
+			echo "Your plant is now "$plant_height" cm high and has "$plant_leaves" leaves."
+			sleep 1
+			echo "Do you want to wait another day?"
+			((plant_height += 2))
+			((plant_height += 2))
+			((day_count += 2))
+			read answer4
+
+		elif [[ "$answer4" == "no" || "$answer4" == "No" ]];then
+			sleep 2
+			echo "Alright, see you later neighbor!"
+			exit
+		else
+			echo "Please try again, and only use 'yes' or 'no'"
+			exit
+		fi
+	done
 
 	if [[ "$answer5" == "yes" || "$answer5" == "Yes" ]]; then 
 		
@@ -340,6 +348,9 @@ while [ $is_active == true ]; do
 		if [[ "$playanswer" == "yes" || "$playanswer" == "Yes" ]]; then
 			sleep 1
 			echo "Reloading game..."
+			plant_height=2
+			plant_leaves=2
+			day_count=7
 			sleep 2
 			is_active=true
 

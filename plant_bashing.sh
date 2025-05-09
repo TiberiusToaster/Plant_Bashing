@@ -1,6 +1,8 @@
 #!/bin/bash
 
-
+plant_height=2
+plant_leaves=2
+day_count=7
 is_active=true
 
 
@@ -72,9 +74,9 @@ while [ $is_active == true ]; do
 
 	if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then 
 		sleep 1
-		echo "It's day 7, your plant has grown 2 cm higher and grown 2 more leaves!"
+		echo "It's day "$day_count", your plant has grown 2 cm higher and grown 2 more leaves!"
 		sleep 1
-		echo "Your plant is now 2 cm high and has 2 leaves."
+		echo "Your plant is now "$plant_height" cm high and has "$plant_leaves" leaves."
 		sleep 1
 		echo "Do you want to wait another day?"
 		read answer5
@@ -89,6 +91,7 @@ while [ $is_active == true ]; do
 	fi
 
 	if [[ "$answer5" == "yes" || "$answer5" == "Yes" ]]; then 
+		
 		sleep 1
 		echo "It's day 8, your plant has grown 2 cm higher and grown 2 more leaves!"
 		sleep 1

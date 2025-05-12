@@ -15,7 +15,7 @@ echo "please type 'yes' or 'no'"
 read answer
 
 
-while [ $is_active == true ]; do
+while [[ $is_active == true ]]; do
 	if [[ $first_time == false ]]; then
 	echo "Hey again neighbor! Do you want to help me grow a plant?"
 	echo "please type 'yes' or 'no'"
@@ -90,7 +90,7 @@ while [ $is_active == true ]; do
 			echo "Do you want to wait another day?"
 			((plant_height += 2))
 			((plant_height += 2))
-			((day_count += 2))
+			((day_count += 1))
 			read answer4
 
 		elif [[ "$answer4" == "no" || "$answer4" == "No" ]];then
@@ -138,5 +138,5 @@ while [ $is_active == true ]; do
 		sleep 2
 		echo "Alright see you later neighbor!"
 		exit
-	fi
+	fi	
 done

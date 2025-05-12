@@ -5,17 +5,22 @@ plant_height=2
 plant_leaves=2
 day_count=7
 is_active=true
+first_time=true
+
+echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
+read name
+sleep 1
+echo "Ok $name, do you want to help me grow a plant."
+echo "please type 'yes' or 'no'"
+read answer
 
 
 while [ $is_active == true ]; do
-	echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
-
-	read name
-	sleep 1
-	echo "Ok $name, do you want to help me grow a plant."
+	if [[ $first_time == false ]]; then
+	echo "Hey again neighbor! Do you want to help me grow a plant?"
 	echo "please type 'yes' or 'no'"
-
 	read answer
+
 	if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then 
 		sleep 1
 		echo "Alright, just dig a good sized hole with this trowel and plant this seed."
@@ -98,239 +103,6 @@ while [ $is_active == true ]; do
 		fi
 	done
 
-	if [[ "$answer5" == "yes" || "$answer5" == "Yes" ]]; then 
-		
-		sleep 1
-		echo "It's day 8, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 1
-		echo "Your plant is now 4 cm high and has 4 leaves."
-		sleep 1
-		echo "Do you want to wait another day?"
-		read answer6
-
-	elif [[ "$answer5" == "no" || "$answer5" == "No" ]];then
-		sleep 2
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
-
-	if [[ "$answer6" == "yes" || "$answer6" == "Yes" ]]; then 
-		sleep 1
-		echo "Its day 9, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 1
-		echo "Your plant is now 6 cm high and has 6 leaves."
-		sleep 1
-		echo "Do you want to wait another day?"
-		read answer7
-
-	elif [[ "$answer6" == "no" || "$answer6" == "No" ]];then
-		sleep 2
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
-
-	if [[ "$answer7" == "yes" || "$answer7" == "Yes" ]]; then 
-		sleep 1
-		echo "It's day 10, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 1
-		echo "Your plant is now 8 cm high and has 8 leaves."
-		sleep 1
-		echo "Do you want to wait another day?"
-		read answer8
-
-	elif [[ "$answer7" == "no" || "$answer7" == "No" ]];then
-		sleep 2
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
-
-	if [[ "$answer8" == "yes" || "$answer8" == "Yes" ]]; then 
-		sleep 1
-		echo "It's day 11, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 1
-		echo "Your plant is now 10 cm high and has 10 leaves."
-		sleep 1
-		echo "Do you want to wait another day?"
-		read answer9
-
-	elif [[ "$answer8" == "no" || "$answer8" == "No" ]];then
-		sleep 2
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
-
-	if [[ "$answer9" == "yes" || "$answer9" == "Yes" ]]; then 
-		sleep 1
-		echo "It's day 12, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 1
-		echo "Your plant is now 12 cm high and has 12 leaves."
-		sleep 1
-		echo "Do you want to wait another day?"
-		read answer10
-
-	elif [[ "$answer9" == "no" || "$answer9" == "No" ]];then
-		sleep 2
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
-
-	if [[ "$answer10" == "yes" || "$answer10" == "Yes" ]]; then 
-		sleep 1
-		echo "It's day 13, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 1
-		echo "Your plant is now 14 cm high and has 14 leaves."
-		sleep 1
-		echo "Do you want to wait another day?"
-		read answer11
-
-	elif [[ "$answer10" == "no" || "$answer10" == "No" ]];then
-		sleep 2
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
-
-	if [[ "$answer11" == "yes" || "$answer11" == "Yes" ]]; then 
-		sleep 1
-		echo "It's day 14, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 1
-		echo "Your plant is now 16 cm high and has 16 leaves."
-		sleep 1
-		echo "Do you want to wait another day?"
-		read answer12
-
-	elif [[ "$answer11" == "no" || "$answer11" == "No" ]];then
-		sleep 2
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
-
-	if [[ "$answer12" == "yes" || "$answer12" == "Yes" ]]; then 
-		sleep 1
-		echo "It's day 15, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 1
-		echo "Your plant is now 18 cm high and has 18 leaves."
-		sleep 1
-		echo "Do you want to wait another day?"
-		read answer13
-
-	elif [[ "$answer12" == "no" || "$answer12" == "No" ]];then
-		sleep 2
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
-
-	if [[ "$answer13" == "yes" || "$answer13" == "Yes" ]]; then 
-		sleep 1
-		echo "It's day 16, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 1
-		echo "Your plant is now 20 cm high and has 20 leaves."
-		sleep 1
-		echo "Do you want to wait another day?"
-		read answer14
-
-	elif [[ "$answer13" == "no" || "$answer13" == "No" ]];then
-		sleep 2
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
-
-	if [[ "$answer14" == "yes" || "$answer14" == "Yes" ]]; then 
-		sleep 1
-		echo "It's day 17, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 1
-		echo "Your plant is now 22 cm high and has 22 leaves."
-		sleep 1
-		echo "Do you want to wait another day?"
-		read answer15
-
-	elif [[ "$answer14" == "no" || "$answer14" == "No" ]];then
-		sleep 2
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
-
-	if [[ "$answer15" == "yes" || "$answer15" == "Yes" ]]; then 
-		sleep 1
-		echo "It's day 18, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 1
-		echo "Your plant is now 24 cm high and has 24 leaves."
-		sleep 1
-		echo "Do you want to wait another day?"
-		read answer16
-
-	elif [[ "$answer15" == "no" || "$answer15" == "No" ]];then
-		sleep 2
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
-
-	if [[ "$answer16" == "yes" || "$answer16" == "Yes" ]]; then 
-		sleep 1
-		echo "It's day 19, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 1
-		echo "Your plant is now 26 cm high and has 26 leaves."
-		sleep 1
-		echo "Do you want to wait another day?"
-		read answer17
-
-	elif [[ "$answer16" == "no" || "$answer16" == "No" ]];then
-		sleep 2
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
-
-	if [[ "$answer17" == "yes" || "$answer17" == "Yes" ]]; then 
-		sleep 1
-		echo "It's day 20, your plant has grown 2 cm higher and grown 2 more leaves!"
-		sleep 1
-		echo "Your plant is now 28 cm high and has 28 leaves."
-		sleep 1
-		echo "Do you want to wait another day?"
-		read answer18
-	elif [[ "$answer17" == "no" || "$answer17" == "No" ]];then
-		sleep 2
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
 
 	if [[ "$answer18" == "yes" || "$answer18" == "Yes" ]]; then 
 		echo "It's day 21, your plant has grown 2 cm higher and grown 2 more leaves!"
@@ -353,6 +125,7 @@ while [ $is_active == true ]; do
 			day_count=7
 			sleep 2
 			is_active=true
+			first_time=false
 
 		else
 			sleep 2

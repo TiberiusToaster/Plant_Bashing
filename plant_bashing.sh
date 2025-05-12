@@ -79,8 +79,8 @@ while [[ $is_active == true ]]; do
 	fi
 
 
-	while [[ "$day_count" < 21 ]]; do
-		if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then 
+	while [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; do
+		if [[ $day_count -lt 21 ]]; then 
 			sleep 1
 			echo "It's day "$day_count", your plant has grown 2 cm higher and grown 2 more leaves!"
 			sleep 1
@@ -103,7 +103,7 @@ while [[ $is_active == true ]]; do
 	done
 
 
-	if [[ "$answer18" == "yes" || "$answer18" == "Yes" ]]; then 
+	if [[ "$day_count" == 21 ]]; then 
 		echo "It's day 21, your plant has grown 2 cm higher and grown 2 more leaves!"
 		sleep 2
 		echo "Your plant is now 30 cm high and has 30 leaves."
@@ -129,7 +129,6 @@ while [[ $is_active == true ]]; do
 		else
 			sleep 2
 			echo "Game closed"
-			is_active=false
 			exit
 		fi
 

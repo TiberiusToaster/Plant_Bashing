@@ -79,8 +79,7 @@ while [[ $is_active == true ]]; do
 	fi
 
 
-
-	while [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; do
+	while [[ "$day_count" < 21 ]]; do
 		if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then 
 			sleep 1
 			echo "It's day "$day_count", your plant has grown 2 cm higher and grown 2 more leaves!"

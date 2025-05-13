@@ -15,11 +15,15 @@ echo "please type 'yes' or 'no'"
 read answer
 
 
+
 while [[ $is_active == true ]]; do
 	if [[ $first_time == false ]]; then
-	echo "Hey again neighbor! Do you want to help me grow a plant?"
-	echo "please type 'yes' or 'no'"
-	read answer
+		echo "Hey again neighbor! Do you want to help me grow a plant?"
+		echo "please type 'yes' or 'no'"
+		read answer
+	else
+
+	fi
 
 	if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then 
 		sleep 1
@@ -77,8 +81,8 @@ while [[ $is_active == true ]]; do
 		echo "Please try again, and only use 'yes' or 'no'"
 		exit
 	fi
-
-
+# TO DO: put a while loop here for controlling if the plant should grow or not grow
+# What is this section of code for?
 	while [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; do
 		if [[ $day_count -lt 21 ]]; then 
 			sleep 1

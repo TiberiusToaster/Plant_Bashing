@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+title=Morpheus
 plant_height=2
 plant_leaves=2
 day_count=7
@@ -29,30 +29,23 @@ while [[ $is_active == true ]]; do
 		read plant_answer
 	elif [[ "$answer" == "no" || "$answer" == "No" ]];then
 		sleep 1
-		echo "Alright, see you later neighbor!"
-		exit
-	else 
-		echo "Please try again, and only use 'yes' or 'no'"
+		plant_answer="no"
 		exit
 	fi
 
 	if [[ "$plant_answer" == "yes" || "$plant_answer" == "Yes" ]]; then 
 		sleep 1
-		echo "Would you to give your plant a name?"
-		read plant_answer
+		echo "What would you like to name your plant?"
+		read title
 	elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
 		sleep 1
 		echo "Alright, see you later neighbor!"
 		exit
-	else 
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
 
 
-	if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then 
+	if [[ -z "$title" ]]; then 
 		sleep 1
-		echo "Alright, just dig a good sized hole with this trowel and plant this seed."
+		echo "Alright just dig a good sized hole for $title and plant this seed."
 		sleep 1
 		echo "Good work!"
 		sleep 1

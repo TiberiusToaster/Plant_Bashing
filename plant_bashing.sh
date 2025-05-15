@@ -9,7 +9,7 @@ first_time=true
 
 echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
 read name
-sleep 1
+sleep 2
 echo "Ok $name, do you want to help me grow a plant."
 echo "please type 'yes' or 'no'"
 read answer
@@ -45,7 +45,7 @@ while [[ $is_active == true ]]; do
 	fi
 
 	if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
-		sleep 3
+		sleep 2
 		echo "Alright, our seed has germinated overnight!"
 		sleep 2
 		echo "Germination is the 2nd stage of our plant."
@@ -63,7 +63,7 @@ while [[ $is_active == true ]]; do
 	fi
 
 	if [[ "$answer3" == "yes" || "$answer3" == "Yes" ]]; then 
-		sleep 4
+		sleep 2
 		echo "Alright, our seed has developed into a sapling!"
 		sleep 2
 		echo "From now on, your plant will grow taller and stronger, but it won't go through any new stages."
@@ -83,11 +83,11 @@ while [[ $is_active == true ]]; do
 # What is this section of code for?
 	while [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; do
 		if [[ $day_count -lt 21 ]]; then 
-			sleep 1
+			#sleep 1
 			echo "It's day "$day_count", your plant has grown 2 cm higher and grown 2 more leaves!"
-			sleep 1
+			#sleep 1
 			echo "Your plant is now "$plant_height" cm high and has "$plant_leaves" leaves."
-			sleep 1
+			#sleep 1
 			echo "Do you want to wait another day?"
 			((plant_height += 2))
 			((plant_leaves += 2))

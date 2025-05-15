@@ -21,8 +21,6 @@ while [[ $is_active == true ]]; do
 		echo "Hey again neighbor! Do you want to help me grow a plant?"
 		echo "please type 'yes' or 'no'"
 		read answer
-	else
-
 	fi
 
 	if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then 

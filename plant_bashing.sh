@@ -90,7 +90,7 @@ while [[ $is_active == true ]]; do
 			sleep 1
 			echo "Do you want to wait another day?"
 			((plant_height += 2))
-			((plant_height += 2))
+			((plant_leaves += 2))
 			((day_count += 1))
 			read answer4
 

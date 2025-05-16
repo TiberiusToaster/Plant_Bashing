@@ -45,6 +45,7 @@ while [[ $is_active == true ]]; do
 		sleep 1
 		echo "Ok, I'll name it Morpheus"
 		exit
+	fi	
 
 
 	if [[ -z "$title" ]]; then 

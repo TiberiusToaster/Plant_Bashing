@@ -3,7 +3,7 @@
 title=Morpheus
 plant_height=2
 plant_leaves=2
-day_count=7
+day_count=5
 is_active=true
 first_time=true
 
@@ -24,8 +24,20 @@ while [[ $is_active == true ]]; do
 	if [[ $first_time == false ]]; then
 		echo "Hey again neighbor! Do you want to help me grow a plant?"
 		echo "please type 'yes' or 'no'"
-		read answer
+		read sanswer
 	fi
+
+	if [[ "$sanswer" == "yes" || "$sanswer" == "Yes" ]]; then 
+		sleep 1
+		echo "Would you like to give your plant a name?"
+		read plant_sanswer
+	elif [[ "$sanswer" == "no" || "$sanswer" == "No" ]];then
+		sleep 1
+		echo "Alright, see you later neighbor!"
+		exit
+	fi
+
+
 
 	if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then 
 		sleep 1
@@ -67,21 +79,6 @@ while [[ $is_active == true ]]; do
 		echo "Do you want to wait 2 days?"
 		read answer2
 	fi	
-
-
-	#if [[ -z "$title" ]]; then 
-		#sleep 1
-		#echo "Alright just dig a good sized hole for $title and plant this seed."
-		#sleep 1
-		#echo "Good work!"
-		#sleep 1
-		#echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
-		#sleep 2
-		#echo "Our days can take as long as your seconds or minutes."
-		#sleep 1
-		#echo "Do you want to wait 2 days?"
-		#read answer2
-	#fi
 
 	if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
 		sleep 1

@@ -37,6 +37,36 @@ while [[ $is_active == true ]]; do
 		exit
 	fi
 
+	if [[ "$plant_sanswer" == "yes" || "$plant_sanswer" == "Yes" ]]; then 
+		sleep 1
+		echo "What would you like to name your plant?"
+		read title
+		sleep 1
+		echo "Alright just dig a good sized hole for $title and plant this seed."
+		sleep 1
+		echo "Good work!"
+		sleep 1
+		echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
+		sleep 2
+		echo "Our days can take as long as your seconds or minutes."
+		sleep 1
+		echo "Do you want to wait 2 days?"
+		read answer2
+	elif [[ "$plant_sanswer" == "no" || "$plant_sanswer" == "No" ]];then
+		sleep 1
+		echo "Ok, I'll name it Morpheus"
+		sleep 1
+		echo "Alright just dig a good sized hole for $title and plant this seed."
+		sleep 1
+		echo "Good work!"
+		sleep 1
+		echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
+		sleep 2
+		echo "Our days can take as long as your seconds or minutes."
+		sleep 1
+		echo "Do you want to wait 2 days?"
+		read answer2
+	fi	
 
 
 	if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then 

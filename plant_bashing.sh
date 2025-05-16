@@ -7,6 +7,10 @@ day_count=7
 is_active=true
 first_time=true
 
+
+
+
+
 echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
 read name
 sleep 2
@@ -29,7 +33,7 @@ while [[ $is_active == true ]]; do
 		read plant_answer
 	elif [[ "$answer" == "no" || "$answer" == "No" ]];then
 		sleep 1
-		plant_answer="no"
+		echo "Alright, see you later neighbor!"
 		exit
 	fi
 
@@ -39,7 +43,7 @@ while [[ $is_active == true ]]; do
 		read title
 	elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
 		sleep 1
-		echo "Alright, see you later neighbor!"
+		echo "Ok, I'll name it Morpheus"
 		exit
 
 
@@ -55,13 +59,6 @@ while [[ $is_active == true ]]; do
 		sleep 1
 		echo "Do you want to wait 2 days?"
 		read answer2
-	elif [[ "$answer" == "no" || "$answer" == "No" ]];then
-		sleep 1
-		echo "Alright, see you later neighbor!"
-		exit
-	else 
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
 	fi
 
 	if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 

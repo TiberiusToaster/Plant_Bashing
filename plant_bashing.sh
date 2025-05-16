@@ -29,7 +29,7 @@ while [[ $is_active == true ]]; do
 
 	if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then 
 		sleep 1
-		echo "Would you to give your plant a name?"
+		echo "Would you like to give your plant a name?"
 		read plant_answer
 	elif [[ "$answer" == "no" || "$answer" == "No" ]];then
 		sleep 1
@@ -44,7 +44,6 @@ while [[ $is_active == true ]]; do
 	elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
 		sleep 1
 		echo "Ok, I'll name it Morpheus"
-		exit
 	fi	
 
 
@@ -70,7 +69,6 @@ while [[ $is_active == true ]]; do
 		sleep 1
 		echo "Do you want to wait another 3 days?"
 		read answer3
-
 	elif [[ "$answer2" == "no" || "$answer2" == "No" ]];then
 		sleep 1
 		echo "Alright, see you later neighbor!"

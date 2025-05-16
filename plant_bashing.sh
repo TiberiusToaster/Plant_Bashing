@@ -41,13 +41,6 @@ while [[ $is_active == true ]]; do
 		sleep 1
 		echo "What would you like to name your plant?"
 		read title
-	elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
-		sleep 1
-		echo "Ok, I'll name it Morpheus"
-	fi	
-
-
-	if [[ -z "$title" ]]; then 
 		sleep 1
 		echo "Alright just dig a good sized hole for $title and plant this seed."
 		sleep 1
@@ -59,7 +52,36 @@ while [[ $is_active == true ]]; do
 		sleep 1
 		echo "Do you want to wait 2 days?"
 		read answer2
-	fi
+	elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
+		sleep 1
+		echo "Ok, I'll name it Morpheus"
+		sleep 1
+		echo "Alright just dig a good sized hole for $title and plant this seed."
+		sleep 1
+		echo "Good work!"
+		sleep 1
+		echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
+		sleep 2
+		echo "Our days can take as long as your seconds or minutes."
+		sleep 1
+		echo "Do you want to wait 2 days?"
+		read answer2
+	fi	
+
+
+	#if [[ -z "$title" ]]; then 
+		#sleep 1
+		#echo "Alright just dig a good sized hole for $title and plant this seed."
+		#sleep 1
+		#echo "Good work!"
+		#sleep 1
+		#echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
+		#sleep 2
+		#echo "Our days can take as long as your seconds or minutes."
+		#sleep 1
+		#echo "Do you want to wait 2 days?"
+		#read answer2
+	#fi
 
 	if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
 		sleep 1
@@ -69,6 +91,7 @@ while [[ $is_active == true ]]; do
 		sleep 1
 		echo "Do you want to wait another 3 days?"
 		read answer3
+
 	elif [[ "$answer2" == "no" || "$answer2" == "No" ]];then
 		sleep 1
 		echo "Alright, see you later neighbor!"

@@ -80,7 +80,7 @@ while [[ $is_active == true ]]; do
 		sleep 1
 		echo "Good work!"
 		sleep 1
-		echo "I know you've only just moved here but I'm sure you've realized  time moves much faster here."
+		echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
 		sleep 1
 		echo "Our days can take as long as your seconds or minutes."
 		sleep 1
@@ -112,29 +112,15 @@ while [[ $is_active == true ]]; do
 			echo "What would you like to name your plant?"
 			read title
 			sleep 1
-			echo "Alright just dig a good sized hole for $title and plant this seed."
+			echo "Ok, it's name is $title"
 			sleep 1
-			echo "Good work!"
-			sleep 1
-			echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
-			sleep 2
-			echo "Our days can take as long as your seconds or minutes."
-			sleep 1
-			echo "Do you want to wait 2 days?"
+			echo "Do you want to wait 2 days for $title to grow?"
 			read answer3
 		elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
 			sleep 1
 			echo "Ok, I'll name it Morpheus"
 			sleep 1
-			echo "Alright just dig a good sized hole for $title and plant this seed."
-			sleep 1
-			echo "Good work!"
-			sleep 1
-			echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
-			sleep 2
-			echo "Our days can take as long as your seconds or minutes."
-			sleep 1
-			echo "Do you want to wait 2 days?"
+			echo "Do you want to wait 2 days for $Morpheus to grow?"
 			read answer3
 		fi
 	fi

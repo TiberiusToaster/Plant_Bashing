@@ -105,6 +105,13 @@ while [[ $is_active == true ]]; do
 			sleep 1
 			echo "Would you like to name your plant?"
 			read plant_answer
+		elif [[ "$answer2" == "no" || "$answer2" == "No" ]]; then
+			echo "Alright, see you later neighbor!"	
+			exit
+		else
+			echo "tiki"
+			echo "Please try again, and only use 'yes' or 'no'"
+			exit	
 		fi
 
 		if [[ "$plant_answer" == "yes" || "$plant_answer" == "Yes" ]]; then 

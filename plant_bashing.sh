@@ -27,18 +27,20 @@ while [[ $is_active == true ]]; do
 		read sanswer
 	fi
 
-	if [[ "$sanswer" == "yes" || "$sanswer" == "Yes" ]]; then 
-		sleep 1
-		echo "Would you like to give your plant a name?"
-		read plant_sanswer
-	elif [[ "$sanswer" == "no" || "$sanswer" == "No" ]];then
-		sleep 1
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit		
-	fi
+	if [[ $first_time == false ]]; then
+		if [[ "$sanswer" == "yes" || "$sanswer" == "Yes" ]]; then 
+			sleep 1
+			echo "Would you like to give your plant a name?"
+			read plant_sanswer
+		elif [[ "$sanswer" == "no" || "$sanswer" == "No" ]];then
+			sleep 1
+			echo "Alright, see you later neighbor!"
+			exit
+		else
+			echo "Please try again, and only use 'yes' or 'no'"
+			exit		
+		fi
+	fi	
 
 	if [[ "$plant_sanswer" == "yes" || "$plant_sanswer" == "Yes" ]]; then 
 		sleep 1

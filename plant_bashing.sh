@@ -35,6 +35,9 @@ while [[ $is_active == true ]]; do
 		sleep 1
 		echo "Alright, see you later neighbor!"
 		exit
+	else
+		echo "Please try again, and only use 'yes' or 'no'"
+		exit		
 	fi
 
 	if [[ "$plant_sanswer" == "yes" || "$plant_sanswer" == "Yes" ]]; then 
@@ -80,55 +83,58 @@ while [[ $is_active == true ]]; do
 		echo "Our days can take as long as your seconds or minutes."
 		sleep 1
 		echo "Do you want to wait 2 days?"
-		read plant_answer
+		read answer2
 	elif [[ "$answer" == "no" || "$answer" == "No" ]];then
 		sleep 1
 		echo "Alright, see you later neighbor!"
 		exit
+	else
+		echo "Please try again, and only use 'yes' or 'no'"
+		exit
 	fi
 
-	fi	
 
-	if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
-		sleep 1
-		echo "Alright, our seed has germinated overnight!"
-		sleep 1
-		echo "Germination is the 2nd stage of our plant."
-		sleep 1
-		echo "Would you like to name your plant?"
-		read plant_answer
+	if [[ $first_time == true ]]
+		if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
+			sleep 1
+			echo "Alright, our seed has germinated overnight!"
+			sleep 1
+			echo "Germination is the 2nd stage of our plant."
+			sleep 1
+			echo "Would you like to name your plant?"
+			read plant_answer
 
-	if [[ "$plant_answer" == "yes" || "$plant_answer" == "Yes" ]]; then 
-		sleep 1
-		echo "What would you like to name your plant?"
-		read title
-		sleep 1
-		echo "Alright just dig a good sized hole for $title and plant this seed."
-		sleep 1
-		echo "Good work!"
-		sleep 1
-		echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
-		sleep 2
-		echo "Our days can take as long as your seconds or minutes."
-		sleep 1
-		echo "Do you want to wait 2 days?"
-		read answer3
-	elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
-		sleep 1
-		echo "Ok, I'll name it Morpheus"
-		sleep 1
-		echo "Alright just dig a good sized hole for $title and plant this seed."
-		sleep 1
-		echo "Good work!"
-		sleep 1
-		echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
-		sleep 2
-		echo "Our days can take as long as your seconds or minutes."
-		sleep 1
-		echo "Do you want to wait 2 days?"
-		read answer3
+		if [[ "$plant_answer" == "yes" || "$plant_answer" == "Yes" ]]; then 
+			sleep 1
+			echo "What would you like to name your plant?"
+			read title
+			sleep 1
+			echo "Alright just dig a good sized hole for $title and plant this seed."
+			sleep 1
+			echo "Good work!"
+			sleep 1
+			echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
+			sleep 2
+			echo "Our days can take as long as your seconds or minutes."
+			sleep 1
+			echo "Do you want to wait 2 days?"
+			read answer3
+		elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
+			sleep 1
+			echo "Ok, I'll name it Morpheus"
+			sleep 1
+			echo "Alright just dig a good sized hole for $title and plant this seed."
+			sleep 1
+			echo "Good work!"
+			sleep 1
+			echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
+			sleep 2
+			echo "Our days can take as long as your seconds or minutes."
+			sleep 1
+			echo "Do you want to wait 2 days?"
+			read answer3
+		fi
 	fi
-	
 
 	if [[ "$answer3" == "yes" || "$answer3" == "Yes" ]]; then 
 		sleep 1
@@ -185,7 +191,7 @@ while [[ $is_active == true ]]; do
 		echo "Would you like to play again? (Yes/No)"
 		read playanswer
 		sleep 3
-		
+
 		if [[ "$playanswer" == "yes" || "$playanswer" == "Yes" ]]; then
 			sleep 1
 			echo "Reloading game..."
@@ -195,16 +201,11 @@ while [[ $is_active == true ]]; do
 			sleep 2
 			is_active=true
 			first_time=false
-
+			
 		else
 			sleep 2
 			echo "Game closed"
 			exit
 		fi
-
-	else
-		sleep 2
-		echo "Alright see you later neighbor!"
-		exit
-	fi	
+	fi
 done

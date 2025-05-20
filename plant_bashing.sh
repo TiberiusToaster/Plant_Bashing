@@ -94,7 +94,7 @@ while [[ $is_active == true ]]; do
 	fi
 
 
-	if [[ $first_time == true ]]
+	if [[ $first_time == true ]]; then
 		if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
 			sleep 1
 			echo "Alright, our seed has germinated overnight!"
@@ -103,6 +103,7 @@ while [[ $is_active == true ]]; do
 			sleep 1
 			echo "Would you like to name your plant?"
 			read plant_answer
+		fi
 
 		if [[ "$plant_answer" == "yes" || "$plant_answer" == "Yes" ]]; then 
 			sleep 1
@@ -153,8 +154,8 @@ while [[ $is_active == true ]]; do
 		exit
 	fi
 
-# TO DO: put a while loop here for controlling if the plant should grow or not grow
-# What is this section of code for?
+	# TO DO: put a while loop here for controlling if the plant should grow or not grow
+	# What is this section of code for?
 	while [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; do
 		if [[ $day_count -lt 21 ]]; then 
 			#sleep 1
@@ -201,7 +202,7 @@ while [[ $is_active == true ]]; do
 			sleep 2
 			is_active=true
 			first_time=false
-			
+
 		else
 			sleep 2
 			echo "Game closed"

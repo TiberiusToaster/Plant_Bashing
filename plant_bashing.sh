@@ -209,7 +209,7 @@ while [[ $is_active == true ]]; do
 			echo "Reloading game..."
 			plant_height=2
 			plant_leaves=2
-			day_count=7
+			day_count=5
 			sleep 2
 			is_active=true
 			first_time=false

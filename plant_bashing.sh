@@ -97,6 +97,18 @@ while [[ $is_active == true ]]; do
 	fi
 
 
+	if [[ $first_time == false ]]; then
+		if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
+			sleep 1
+			echo "Alright, our seed has germinated overnight!"
+			sleep 1
+			echo "Germination is the 2nd stage of our plant."
+			sleep 1
+			echo "Do you want to wait 2 days?"
+			read answer3
+		fi	
+	fi
+
 	if [[ $first_time == true ]]; then
 		if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
 			sleep 1
@@ -168,7 +180,6 @@ while [[ $is_active == true ]]; do
 	done
 
 	if [[ "$answer4" == "no" || "$answer4" == "No" ]];then
-		echo "tiki"
 		sleep 1
 		echo "Alright, see you later neighbor!"
 		exit

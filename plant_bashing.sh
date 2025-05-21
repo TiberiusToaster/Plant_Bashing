@@ -164,8 +164,8 @@ while [[ $is_active == true ]]; do
 
 	# TO DO: put a while loop here for controlling if the plant should grow or not grow
 	# What is this section of code for?
-	while [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; do
-		if [[ $day_count -lt 21 ]]; then 
+	while [[ $day_count -lt 21 ]]; do
+		if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then 
 			#sleep 1
 			echo "It's day "$day_count", your plant has grown 2 cm higher and grown 2 more leaves!"
 			#sleep 1
@@ -183,12 +183,15 @@ while [[ $is_active == true ]]; do
 		sleep 1
 		echo "Alright, see you later neighbor!"
 		exit
+	elif [[ "$answer4" == "yes" || "$answer4" == "Yes" ]];then
+		sleep 1
+		echo "Alright"
 	else
 		echo "Please try again, and only use 'yes' or 'no'"
 		exit
 	fi
 
-	if [[ "$day_count" == 21 ]]; then 
+	if [[ "$day_count" -ge 21 ]]; then 
 		echo "It's day 21, $title has grown 2 cm higher and grown 2 more leaves!"
 		sleep 2
 		echo "Your plant is now 34 cm high and has 34 leaves."
@@ -212,7 +215,7 @@ while [[ $is_active == true ]]; do
 			first_time=false
 
 		else
-			sleep 2
+			sleep 1
 			echo "Game closed"
 			exit
 		fi

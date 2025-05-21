@@ -58,6 +58,7 @@ while [[ $is_active == true ]]; do
 		echo "Do you want to wait 2 days?"
 		read answer2
 	elif [[ "$plant_sanswer" == "no" || "$plant_sanswer" == "No" ]];then
+		((title == Morpheus))
 		sleep 1
 		echo "Ok, I'll name it Morpheus"
 		sleep 1
@@ -109,7 +110,6 @@ while [[ $is_active == true ]]; do
 			echo "Alright, see you later neighbor!"	
 			exit
 		else
-			echo "tiki"
 			echo "Please try again, and only use 'yes' or 'no'"
 			exit	
 		fi
@@ -164,17 +164,18 @@ while [[ $is_active == true ]]; do
 			((plant_leaves += 2))
 			((day_count += 1))
 			read answer4
-
-		elif [[ "$answer4" == "no" || "$answer4" == "No" ]];then
-			sleep 1
-			echo "Alright, see you later neighbor!"
-			exit
-		else
-			echo "Please try again, and only use 'yes' or 'no'"
-			exit
 		fi
 	done
 
+	if [[ "$answer4" == "no" || "$answer4" == "No" ]];then
+		echo "tiki"
+		sleep 1
+		echo "Alright, see you later neighbor!"
+		exit
+	else
+		echo "Please try again, and only use 'yes' or 'no'"
+		exit
+	fi
 
 	if [[ "$day_count" == 21 ]]; then 
 		echo "It's day 21, $title has grown 2 cm higher and grown 2 more leaves!"

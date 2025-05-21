@@ -124,10 +124,11 @@ while [[ $is_active == true ]]; do
 			echo "Do you want to wait 2 days for $title to grow?"
 			read answer3
 		elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
+			((title == Morpheus))
 			sleep 1
 			echo "Ok, I'll name it Morpheus"
 			sleep 1
-			echo "Do you want to wait 2 days for $Morpheus to grow?"
+			echo "Do you want to wait 2 days for $title to grow?"
 			read answer3
 		fi
 	fi
@@ -136,7 +137,7 @@ while [[ $is_active == true ]]; do
 		sleep 1
 		echo "Alright, our seed has developed into a sapling!"
 		sleep 1
-		echo "From now on, your plant will grow taller and stronger, but it won't go through any new stages."
+		echo "From now on, $title will grow taller and stronger, but it won't go through any new stages."
 		sleep 3
 		echo "Do you want to wait another day?"
 		read answer4
@@ -156,7 +157,7 @@ while [[ $is_active == true ]]; do
 			#sleep 1
 			echo "It's day "$day_count", your plant has grown 2 cm higher and grown 2 more leaves!"
 			#sleep 1
-			echo "Your plant is now "$plant_height" cm high and has "$plant_leaves" leaves."
+			echo "$title is now "$plant_height" cm high and has "$plant_leaves" leaves."
 			#sleep 1
 			echo "Do you want to wait another day?"
 			((plant_height += 2))
@@ -176,9 +177,9 @@ while [[ $is_active == true ]]; do
 
 
 	if [[ "$day_count" == 21 ]]; then 
-		echo "It's day 21, your plant has grown 2 cm higher and grown 2 more leaves!"
+		echo "It's day 21, $title has grown 2 cm higher and grown 2 more leaves!"
 		sleep 2
-		echo "Your plant is now 30 cm high and has 30 leaves."
+		echo "Your plant is now 34 cm high and has 34 leaves."
 		sleep 2
 		echo "I think I can take care of it from here neighbor."
 		sleep 2

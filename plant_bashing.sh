@@ -74,27 +74,28 @@ while [[ $is_active == true ]]; do
 		read answer2
 	fi	
 
-
-	if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then 
-		sleep 1
-		echo "Alright just dig a good sized hole and plant this seed."
-		sleep 1
-		echo "Good work!"
-		sleep 1
-		echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
-		sleep 1
-		echo "Our days can take as long as your seconds or minutes."
-		sleep 1
-		echo "Do you want to wait 2 days?"
-		read answer2
-	elif [[ "$answer" == "no" || "$answer" == "No" ]];then
-		sleep 1
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
+	if [[ $first_time == true ]]; then
+		if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then 
+			sleep 1
+			echo "Alright just dig a good sized hole and plant this seed."
+			sleep 1
+			echo "Good work!"
+			sleep 1
+			echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
+			sleep 1
+			echo "Our days can take as long as your seconds or minutes."
+			sleep 1
+			echo "Do you want to wait 2 days?"
+			read answer2
+		elif [[ "$answer" == "no" || "$answer" == "No" ]];then
+			sleep 1
+			echo "Alright, see you later neighbor!"
+			exit
+		else
+			echo "Please try again, and only use 'yes' or 'no'"
+			exit
+		fi
+	fi	
 
 
 	if [[ $first_time == false ]]; then
@@ -106,6 +107,12 @@ while [[ $is_active == true ]]; do
 			sleep 1
 			echo "Do you want to wait 2 days?"
 			read answer3
+		elif [[ "$answer2" == "no" || "$answer2" == "No" ]]; then
+			echo "Alright, see you later neighbor!"	
+			exit
+		else
+			echo "Please try again, and only use 'yes' or 'no'"
+			exit
 		fi	
 	fi
 
@@ -211,8 +218,8 @@ while [[ $is_active == true ]]; do
 			plant_leaves=2
 			day_count=5
 			sleep 2
-			is_active=true
 			first_time=false
+			is_active=true
 
 		else
 			sleep 1

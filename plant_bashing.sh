@@ -174,7 +174,7 @@ while [[ $is_active == true ]]; do
 	while [[ $day_count -lt 21 ]]; do
 		if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then 
 			#sleep 1
-			echo "It's day "$day_count", your plant has grown 2 cm higher and grown 2 more leaves!"
+			echo "It's day "$day_count", $title has grown 2 cm higher and grown 2 more leaves!"
 			#sleep 1
 			echo "$title is now "$plant_height" cm high and has "$plant_leaves" leaves."
 			#sleep 1
@@ -184,19 +184,18 @@ while [[ $is_active == true ]]; do
 			((day_count += 1))
 			read answer4
 		fi
+		if [[ "$answer4" == "no" || "$answer4" == "No" ]];then
+			sleep 1
+			echo "Alright, see you later neighbor!"
+			exit
+		elif [[ "$answer4" == "yes" || "$answer4" == "Yes" ]];then
+			echo "Alright"
+		else
+			echo "Please try again, and only use 'yes' or 'no'"
+			exit
+		fi
 	done
 
-	if [[ "$answer4" == "no" || "$answer4" == "No" ]];then
-		sleep 1
-		echo "Alright, see you later neighbor!"
-		exit
-	elif [[ "$answer4" == "yes" || "$answer4" == "Yes" ]];then
-		sleep 1
-		echo "Alright"
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
 
 	if [[ "$day_count" -ge 21 ]]; then 
 		echo "It's day 21, $title has grown 2 cm higher and grown 2 more leaves!"

@@ -57,8 +57,9 @@ while [[ $is_active == true ]]; do
 		echo "Do you want to wait 2 days?"
 		read answer2
 	elif [[ "$plant_sanswer" == "no" || "$plant_sanswer" == "No" ]];then
-		((title == ${default_names[$i]}))
-		((i++))
+		title=${default_names[$i]}
+		((i++)) 
+		echo "i is now: $i"
 		sleep 1
 		echo "Ok, I'll name it $title"
 		sleep 1
@@ -143,8 +144,9 @@ while [[ $is_active == true ]]; do
 			echo "Do you want to wait 2 days for $title to grow?"
 			read answer3
 		elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
-			((title == ${default_names[$i]}))
-			((i++))
+			title=${default_names[$i]}
+			((i++)) 
+			echo "i is now: $i"
 			sleep 1
 			echo "Ok, I'll name it $title"
 			sleep 1
@@ -226,5 +228,10 @@ while [[ $is_active == true ]]; do
 			echo "Game closed"
 			exit
 		fi
+	fi
+
+
+	if [[ $i == "3" ]]; then
+		(($i == 0))
 	fi
 done

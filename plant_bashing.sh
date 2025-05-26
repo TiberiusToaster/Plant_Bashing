@@ -7,8 +7,7 @@ day_count=5
 is_active=true
 first_time=true
 
-
-
+default_names=(Morpheus Analiea Izzy)
 
 
 echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"

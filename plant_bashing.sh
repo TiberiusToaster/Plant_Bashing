@@ -8,7 +8,7 @@ is_active=true
 first_time=true
 
 default_names=(Morpheus Analiea Izzy)
-
+i=0 #used to change array names when incrementing
 
 echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
 read name
@@ -57,9 +57,10 @@ while [[ $is_active == true ]]; do
 		echo "Do you want to wait 2 days?"
 		read answer2
 	elif [[ "$plant_sanswer" == "no" || "$plant_sanswer" == "No" ]];then
-		((title == Morpheus))
+		((title == ${default_names[$i]}))
+		((i++))
 		sleep 1
-		echo "Ok, I'll name it Morpheus"
+		echo "Ok, I'll name it $title"
 		sleep 1
 		echo "Alright just dig a good sized hole for $title and plant this seed."
 		sleep 1
@@ -100,7 +101,7 @@ while [[ $is_active == true ]]; do
 	if [[ $first_time == false ]]; then
 		if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
 			sleep 1
-			echo "Alright, our seed has germinated overnight!"
+			echo "Alright, $title has germinated overnight!"
 			sleep 1
 			echo "Germination is the 2nd stage of our plant."
 			sleep 1
@@ -142,9 +143,10 @@ while [[ $is_active == true ]]; do
 			echo "Do you want to wait 2 days for $title to grow?"
 			read answer3
 		elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
-			((title == Morpheus))
+			((title == ${default_names[$i]}))
+			((i++))
 			sleep 1
-			echo "Ok, I'll name it Morpheus"
+			echo "Ok, I'll name it $title"
 			sleep 1
 			echo "Do you want to wait 2 days for $title to grow?"
 			read answer3

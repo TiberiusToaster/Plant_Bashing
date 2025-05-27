@@ -63,7 +63,6 @@ while [[ $is_active == true ]]; do
 	elif [[ "$plant_sanswer" == "no" || "$plant_sanswer" == "No" ]];then
 		title=${default_names[$i]}
 		((i++)) 
-		echo "i is now: $i"
 		sleep 1
 		echo "Ok, I'll name it $title"
 		sleep 1
@@ -150,7 +149,6 @@ while [[ $is_active == true ]]; do
 		elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
 			title=${default_names[$i]}
 			((i++)) 
-			echo "i is now: $i"
 			sleep 1
 			echo "Ok, I'll name it $title"
 			sleep 1

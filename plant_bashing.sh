@@ -10,6 +10,10 @@ first_time=true
 default_names=(Morpheus Analiea Izzy)
 i=0 #used to change array names when incrementing
 
+weather_array=(Rainy Sunny Cloudy Overcast Windstorm Rainy Foggy)
+w=0 #used to hold a random weather condition in the growth loop
+
+
 echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
 read name
 sleep 2
@@ -156,6 +160,7 @@ while [[ $is_active == true ]]; do
 	fi
 
 	if [[ "$answer3" == "yes" || "$answer3" == "Yes" ]]; then 
+		w=$((RANDOM % ${#weather_array[@]}))
 		sleep 1
 		echo "Alright, our seed has developed into a sapling!"
 		sleep 1

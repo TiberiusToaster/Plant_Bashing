@@ -1,6 +1,7 @@
 #!/bin/bash
 
 title=Morpheus
+weather=Rainy
 plant_height=2
 plant_leaves=2
 day_count=5
@@ -158,7 +159,6 @@ while [[ $is_active == true ]]; do
 	fi
 
 	if [[ "$answer3" == "yes" || "$answer3" == "Yes" ]]; then 
-		w=$((RANDOM % ${#weather_array[@]}))
 		sleep 1
 		echo "Alright, our seed has developed into a sapling!"
 		sleep 1
@@ -179,6 +179,9 @@ while [[ $is_active == true ]]; do
 	# What is this section of code for?
 	while [[ $day_count -lt 21 ]]; do
 		if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then 
+			weather=$((RANDOM % ${#weather_array[@]}))
+			w=${weather_array[$weather]}
+			echo "Weather today: $w"
 			#sleep 1
 			echo "It's day "$day_count", $title has grown 2 cm higher and grown 2 more leaves!"
 			#sleep 1

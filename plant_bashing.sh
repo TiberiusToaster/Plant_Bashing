@@ -7,6 +7,11 @@ plant_leaves=2
 day_count=5
 is_active=true
 first_time=true
+growth_rate=0
+growth_readiness=0
+
+
+
 
 default_names=(Morpheus Analiea Izzy)
 i=0 #used to change array names when incrementing

@@ -19,17 +19,31 @@ i=0 #used to change array names when incrementing
 weather_array=(Rainy Sunny Cloudy Overcast Windstorm Rainy Foggy)
 w=0 #used to hold a random weather condition in the growth loop
 
+#If growth happens:
 
-echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
-read name
-sleep 2
-echo "Ok $name, do you want to help me grow a plant."
-echo "please type 'yes' or 'no'"
-read answer
+    #Height increases by 1.5cm
+    #Leaves increase by: 2 + (2.5 × current growth rate)
 
+#Rainy — No growth; increase growth rate by 2
+#Sunny — Growth occurs; increase growth rate by 3
+#Cloudy — No growth
+#Overcast — Growth occurs
+#Windstorm — No growth; decrease growth rate by 2; lose 3 leaves
+#Foggy — No growth; decrease growth rate by 1
+
+
+first_greeting() {
+	echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
+	read name
+	sleep 2
+	echo "Ok $name, do you want to help me grow a plant."
+	echo "please type 'yes' or 'no'"
+	read answer
+}
 
 
 while [[ $is_active == true ]]; do
+	second_time_talk() {
 	if [[ $first_time == false ]]; then
 		echo "Hey again neighbor! Do you want to help me grow a plant?"
 		echo "please type 'yes' or 'no'"
@@ -84,6 +98,26 @@ while [[ $is_active == true ]]; do
 		read answer2
 	fi	
 
+	if [[ $first_time == false ]]; then
+		if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
+			sleep 1
+			echo "Alright, $title has germinated overnight!"
+			sleep 1
+			echo "Germination is the 2nd stage of our plant."
+			sleep 1
+			echo "Do you want to wait 2 days?"
+			read answer3
+		elif [[ "$answer2" == "no" || "$answer2" == "No" ]]; then
+			echo "Alright, see you later neighbor!"	
+			exit
+		else
+			echo "Please try again, and only use 'yes' or 'no'"
+			exit
+		fi	
+	fi
+	}
+
+
 	if [[ $first_time == true ]]; then
 		if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then 
 			sleep 1
@@ -107,24 +141,6 @@ while [[ $is_active == true ]]; do
 		fi
 	fi	
 
-
-	if [[ $first_time == false ]]; then
-		if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
-			sleep 1
-			echo "Alright, $title has germinated overnight!"
-			sleep 1
-			echo "Germination is the 2nd stage of our plant."
-			sleep 1
-			echo "Do you want to wait 2 days?"
-			read answer3
-		elif [[ "$answer2" == "no" || "$answer2" == "No" ]]; then
-			echo "Alright, see you later neighbor!"	
-			exit
-		else
-			echo "Please try again, and only use 'yes' or 'no'"
-			exit
-		fi	
-	fi
 
 	if [[ $first_time == true ]]; then
 		if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
@@ -193,7 +209,7 @@ while [[ $is_active == true ]]; do
 			echo "$title is now "$plant_height" cm high and has "$plant_leaves" leaves."
 			#sleep 1
 			echo "Do you want to wait another day?"
-			((plant_height += 2))
+			plant_height=$(echo "$plant_height + 1.5" | bc)
 			((plant_leaves += 2))
 			((day_count += 1))
 			read answer4
@@ -208,6 +224,11 @@ while [[ $is_active == true ]]; do
 			echo "Please try again, and only use 'yes' or 'no'"
 			exit
 		fi
+
+		if [[ "$weather" == "Rainy" ]]; then
+
+		fi
+
 	done
 
 

@@ -233,9 +233,22 @@ while [[ $is_active == true ]]; do
 		fi
 
 		if [[ "$weather" == "Sunny" ]]; then
-
+			growth
 			((growth_rate += 3))
+		fi
 
+		if [[ "$weather" == "Overcast" ]]; then
+			growth
+		fi
+
+		if [[ "$weather" == "Windstorm" ]]; then
+			((growth_rate -= 2))
+			((plant_leaves -= 3))
+		fi
+
+		if [[ "$weather" == "Windstorm" ]]; then
+			((growth_rate -= 1))
+		fi
 
 	done
 

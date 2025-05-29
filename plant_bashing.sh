@@ -2,13 +2,12 @@
 
 title=Morpheus
 weather=Rainy
-plant_height=2
-plant_leaves=2
+plant_height=0
+plant_leaves=0
 day_count=5
 is_active=true
 first_time=true
 growth_rate=0
-growth_readiness=0
 
 
 
@@ -41,6 +40,10 @@ first_greeting() {
 	read answer
 }
 
+growth() {
+	plant_height=$(echo "$plant_height + 1.5" | bc)
+	plant_leaves=$(echo "$plant_leaves + 2 + 2.5 * $growth_rate" | bc)
+}
 
 while [[ $is_active == true ]]; do
 	second_time_talk() {
@@ -226,8 +229,13 @@ while [[ $is_active == true ]]; do
 		fi
 
 		if [[ "$weather" == "Rainy" ]]; then
-
+			((growth_rate += 2))
 		fi
+
+		if [[ "$weather" == "Sunny" ]]; then
+
+			((growth_rate += 3))
+
 
 	done
 

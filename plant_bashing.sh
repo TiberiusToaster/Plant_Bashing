@@ -31,14 +31,14 @@ w=0 #used to hold a random weather condition in the growth loop
 #Foggy — No growth; decrease growth rate by 1
 
 
-first_greeting() {
+
 	echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
 	read name
 	sleep 2
 	echo "Ok $name, do you want to help me grow a plant."
 	echo "please type 'yes' or 'no'"
 	read answer
-}
+
 
 growth() {
 	plant_height=$(echo "$plant_height + 1.5" | bc)
@@ -139,6 +139,7 @@ while [[ $is_active == true ]]; do
 			echo "Alright, see you later neighbor!"
 			exit
 		else
+			echo "tiki"
 			echo "Please try again, and only use 'yes' or 'no'"
 			exit
 		fi
@@ -226,12 +227,14 @@ while [[ $is_active == true ]]; do
 
 			if [[ "$weather" == "Windstorm" ]]; then
 				((growth_rate -= 1))
-
+				(($winstorms_survived += 1))
 			fi
 
 			echo "Weather today: $w"
 			#sleep 1
 			echo "It's day "$day_count", $title is $plant_height cm tall, and has $plant_leaves leaves!"
+			#sleep 1
+			echo "So far you've survived $winstorms_survived windstorms."
 			#sleep 1
 			echo "Do you want to wait another day?"
 			((day_count += 1))
@@ -256,8 +259,10 @@ while [[ $is_active == true ]]; do
 		sleep 2
 		echo "$title is now $plant_height cm high and has $plant_leaves leaves."
 		sleep 2
+		echo "$title has survived $winstorms_survived windstorms."
+		sleep 1
 		echo "I think I can take care of it from here neighbor."
-		sleep 2
+		sleep 1
 		echo "Thanks for the help, see you later!"
 		sleep 1
 		echo "Would you like to play again? (Yes/No)"

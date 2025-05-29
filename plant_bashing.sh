@@ -8,7 +8,7 @@ day_count=5
 is_active=true
 first_time=true
 growth_rate=0
-
+winstorms_survived=0
 
 
 
@@ -205,15 +205,35 @@ while [[ $is_active == true ]]; do
 		if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then 
 			weather=$((RANDOM % ${#weather_array[@]}))
 			w=${weather_array[$weather]}
+
+			if [[ "$weather" == "Rainy" ]]; then
+				((growth_rate += 2))
+			fi
+
+			if [[ "$weather" == "Sunny" ]]; then
+				growth
+				((growth_rate += 3))
+			fi
+
+			if [[ "$weather" == "Overcast" ]]; then
+				growth
+			fi
+
+			if [[ "$weather" == "Windstorm" ]]; then
+				((growth_rate -= 2))
+				((plant_leaves -= 3))
+			fi
+
+			if [[ "$weather" == "Windstorm" ]]; then
+				((growth_rate -= 1))
+
+			fi
+
 			echo "Weather today: $w"
 			#sleep 1
-			echo "It's day "$day_count", $title has grown 2 cm higher and grown 2 more leaves!"
-			#sleep 1
-			echo "$title is now "$plant_height" cm high and has "$plant_leaves" leaves."
+			echo "It's day "$day_count", $title is $plant_height cm tall, and has $plant_leaves leaves!"
 			#sleep 1
 			echo "Do you want to wait another day?"
-			plant_height=$(echo "$plant_height + 1.5" | bc)
-			((plant_leaves += 2))
 			((day_count += 1))
 			read answer4
 		fi
@@ -228,35 +248,13 @@ while [[ $is_active == true ]]; do
 			exit
 		fi
 
-		if [[ "$weather" == "Rainy" ]]; then
-			((growth_rate += 2))
-		fi
-
-		if [[ "$weather" == "Sunny" ]]; then
-			growth
-			((growth_rate += 3))
-		fi
-
-		if [[ "$weather" == "Overcast" ]]; then
-			growth
-		fi
-
-		if [[ "$weather" == "Windstorm" ]]; then
-			((growth_rate -= 2))
-			((plant_leaves -= 3))
-		fi
-
-		if [[ "$weather" == "Windstorm" ]]; then
-			((growth_rate -= 1))
-		fi
-
 	done
 
 
-	if [[ "$day_count" -ge 21 ]]; then 
-		echo "It's day 21, $title has grown 2 cm higher and grown 2 more leaves!"
+	if [[ "$plant_height" -ge 35 ]]; then 
+		echo "It's day $day_count."
 		sleep 2
-		echo "Your plant is now 34 cm high and has 34 leaves."
+		echo "$title is now $plant_height cm high and has $plant_leaves leaves."
 		sleep 2
 		echo "I think I can take care of it from here neighbor."
 		sleep 2
@@ -269,8 +267,8 @@ while [[ $is_active == true ]]; do
 		if [[ "$playanswer" == "yes" || "$playanswer" == "Yes" ]]; then
 			sleep 1
 			echo "Reloading game..."
-			plant_height=2
-			plant_leaves=2
+			plant_height=0
+			plant_leaves=0
 			day_count=5
 			sleep 2
 			first_time=false

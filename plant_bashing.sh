@@ -15,7 +15,7 @@ winstorms_survived=0
 default_names=(Morpheus Analiea Izzy)
 i=0 #used to change array names when incrementing
 
-weather_array=(Rainy Sunny Cloudy Overcast Windstorm Rainy Foggy)
+weather_array=(Rainy Rainy Sunny Cloudy Overcast Windstorm Rainy Foggy)
 w=0 #used to hold a random weather condition in the growth loop
 
 #If growth happens:
@@ -207,10 +207,6 @@ growth() {
 		if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then 
 			weather=$((RANDOM % ${#weather_array[@]}))
 			w=${weather_array[$weather]}
-
-			if [[ "$w" == "Rainy" ]]; then
-				((growth_rate += 2))
-			fi
 
 			if [[ "$w" == "Rainy" ]]; then
 				((growth_rate += 2))

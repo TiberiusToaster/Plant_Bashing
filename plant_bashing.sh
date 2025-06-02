@@ -40,10 +40,7 @@ w=0 #used to hold a random weather condition in the growth loop
 	read answer
 
 
-growth() {
-	plant_height=$(echo "$plant_height + 1.5" | bc)
-	plant_leaves=$(echo "$plant_leaves + 2 + 2.5 * $growth_rate" | bc)
-}
+
 
 while [[ $is_active == true ]]; do
 	second_time_talk() {
@@ -199,35 +196,43 @@ while [[ $is_active == true ]]; do
 		echo "Please try again, and only use 'yes' or 'no'"
 		exit
 	fi
-
+growth() {
+	echo "tiki"
+	plant_height=$(echo "$plant_height + 1.5" | bc)
+	plant_leaves=$(echo "$plant_leaves + 2 + 2.5 * $growth_rate" | bc)
+}
 	# TO DO: put a while loop here for controlling if the plant should grow or not grow
 	# What is this section of code for?
-	while [[ $day_count -lt 21 ]]; do
+	while [[ $day_count -lt 35 ]]; do
 		if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then 
 			weather=$((RANDOM % ${#weather_array[@]}))
 			w=${weather_array[$weather]}
 
-			if [[ "$weather" == "Rainy" ]]; then
+			if [[ "$w" == "Rainy" ]]; then
 				((growth_rate += 2))
 			fi
 
-			if [[ "$weather" == "Sunny" ]]; then
+			if [[ "$w" == "Rainy" ]]; then
+				((growth_rate += 2))
+			fi
+
+			if [[ "$w" == "Sunny" ]]; then
 				growth
 				((growth_rate += 3))
 			fi
 
-			if [[ "$weather" == "Overcast" ]]; then
+			if [[ "$w" == "Overcast" ]]; then
 				growth
 			fi
 
-			if [[ "$weather" == "Windstorm" ]]; then
+			if [[ "$w" == "Windstorm" ]]; then
 				((growth_rate -= 2))
 				((plant_leaves -= 3))
+				((winstorms_survived += 1))
 			fi
 
-			if [[ "$weather" == "Windstorm" ]]; then
+			if [[ "$w" == "Foggy" ]]; then
 				((growth_rate -= 1))
-				(($winstorms_survived += 1))
 			fi
 
 			echo "Weather today: $w"
@@ -235,6 +240,8 @@ while [[ $is_active == true ]]; do
 			echo "It's day "$day_count", $title is $plant_height cm tall, and has $plant_leaves leaves!"
 			#sleep 1
 			echo "So far you've survived $winstorms_survived windstorms."
+			#sleep 1
+			echo "Your current growth rate is $growth_rate."
 			#sleep 1
 			echo "Do you want to wait another day?"
 			((day_count += 1))
@@ -252,7 +259,6 @@ while [[ $is_active == true ]]; do
 		fi
 
 	done
-
 
 	if [[ "$plant_height" -ge 35 ]]; then 
 		echo "It's day $day_count."

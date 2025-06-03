@@ -136,7 +136,6 @@ while [[ $is_active == true ]]; do
 			echo "Alright, see you later neighbor!"
 			exit
 		else
-			echo "tiki"
 			echo "Please try again, and only use 'yes' or 'no'"
 			exit
 		fi
@@ -197,24 +196,23 @@ while [[ $is_active == true ]]; do
 		exit
 	fi
 growth() {
-	echo "tiki"
 	plant_height=$(echo "$plant_height + 1.5" | bc)
 	plant_leaves=$(echo "$plant_leaves + 2 + 2.5 * $growth_rate" | bc)
 }
 	# TO DO: put a while loop here for controlling if the plant should grow or not grow
 	# What is this section of code for?
-	while [[ $day_count -lt 35 ]]; do
-		if [[ "$answer4" == "yes" || "$answer4" == "Yes" ]]; then 
+	while (( $(echo "$plant_height < 35" | bc -l) )); do
+		if [[ "$answer4" == "yes" || "$answer4" == "Yes" || -z "$answer4"]]; then 
 			weather=$((RANDOM % ${#weather_array[@]}))
 			w=${weather_array[$weather]}
 
 			if [[ "$w" == "Rainy" ]]; then
-				((growth_rate += 2))
+				growth_rate=$(echo "$growth_rate + 2"| bc)
 			fi
 
 			if [[ "$w" == "Sunny" ]]; then
 				growth
-				((growth_rate += 3))
+				growth_rate=$(echo "$growth_rate + 2"| bc)
 			fi
 
 			if [[ "$w" == "Overcast" ]]; then
@@ -222,13 +220,13 @@ growth() {
 			fi
 
 			if [[ "$w" == "Windstorm" ]]; then
-				((growth_rate -= 2))
-				((plant_leaves -= 3))
+				growth_rate=$(echo "$growth_rate - 2"| bc)
+				plant_leaves=$(echo "$plant_leaves - 3"| bc)
 				((winstorms_survived += 1))
 			fi
 
 			if [[ "$w" == "Foggy" ]]; then
-				((growth_rate -= 1))
+				growth_rate=$(echo "$growth_rate - 1"| bc)
 			fi
 
 			echo "Weather today: $w"
@@ -243,6 +241,7 @@ growth() {
 			((day_count += 1))
 			read answer4
 		fi
+
 		if [[ "$answer4" == "no" || "$answer4" == "No" ]];then
 			sleep 1
 			echo "Alright, see you later neighbor!"
@@ -256,7 +255,7 @@ growth() {
 
 	done
 
-	if [[ "$plant_height" -ge 35 ]]; then 
+	if [[ $(echo "$plant_height >= 35" | bc) == 1 ]]; then 
 		echo "It's day $day_count."
 		sleep 2
 		echo "$title is now $plant_height cm high and has $plant_leaves leaves."

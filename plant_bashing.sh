@@ -1,14 +1,14 @@
 #!/bin/bash
 
-title=Morpheus
-weather=Rainy
-plant_height=0
-plant_leaves=0
-day_count=5
-is_active=true
-first_time=true
-growth_rate=0
-winstorms_survived=0
+title=Morpheus #Declaring the plant's name before further change
+weather=Rainy #declaring the weather variable so it can be changed later
+plant_height=0 #holds the plant's height
+plant_leaves=0 #holds the plants number of leaves
+day_count=5 #keeps record of the number of days that have passed
+is_active=true #Can be used to close while loop. Haven't used yet but may be useful in the future 
+first_time=true #locks of some if statements weather or not it is the user's first time playing
+growth_rate=0 #holds the plants current growth rate
+winstorms_survived=0 #holds how mnay windstorms the plant has survived
 
 
 
@@ -31,7 +31,7 @@ w=0 #used to hold a random weather condition in the growth loop
 #Foggy — No growth; decrease growth rate by 1
 
 
-
+	#intro sequence
 	echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
 	read name
 	sleep 2
@@ -41,8 +41,9 @@ w=0 #used to hold a random weather condition in the growth loop
 
 
 
-
+#play again while loop
 while [[ $is_active == true ]]; do
+
 	second_time_talk() {
 	if [[ $first_time == false ]]; then
 		echo "Hey again neighbor! Do you want to help me grow a plant?"
@@ -178,31 +179,15 @@ while [[ $is_active == true ]]; do
 			read answer3
 		fi
 	fi
-
-	if [[ "$answer3" == "yes" || "$answer3" == "Yes" ]]; then 
-		sleep 1
-		echo "Alright, our seed has developed into a sapling!"
-		sleep 1
-		echo "From now on, $title will grow taller and stronger, but it won't go through any new stages."
-		sleep 3
-		echo "Do you want to wait another day?"
-		read answer4
-	elif [[ "$answer3" == "no" || "$answer3" == "No" ]];then
-		sleep 1
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
 growth() {
 	plant_height=$(echo "$plant_height + 1.5" | bc)
 	plant_leaves=$(echo "$plant_leaves + 2 + 2.5 * $growth_rate" | bc)
 }
-	# TO DO: put a while loop here for controlling if the plant should grow or not grow
-	# What is this section of code for?
+growth_loop() {
 	while (( $(echo "$plant_height < 35" | bc -l) )); do
-		if [[ "$answer4" == "yes" || "$answer4" == "Yes" || -z "$answer4"]]; then 
+		echo "Do you want to wait another day?"
+		read answer4
+		if [[ "$answer4" == "yes" || "$answer4" == "Yes" || -z "$answer4" ]]; then 
 			weather=$((RANDOM % ${#weather_array[@]}))
 			w=${weather_array[$weather]}
 
@@ -236,24 +221,38 @@ growth() {
 			echo "So far you've survived $winstorms_survived windstorms."
 			#sleep 1
 			echo "Your current growth rate is $growth_rate."
-			#sleep 1
-			echo "Do you want to wait another day?"
 			((day_count += 1))
-			read answer4
 		fi
 
 		if [[ "$answer4" == "no" || "$answer4" == "No" ]];then
 			sleep 1
 			echo "Alright, see you later neighbor!"
 			exit
-		elif [[ "$answer4" == "yes" || "$answer4" == "Yes" ]];then
-			echo "Alright"
+		elif [[ "$answer4" == "yes" || "$answer4" == "Yes" || -z "$answer4" ]];then
+			echo " "
 		else
 			echo "Please try again, and only use 'yes' or 'no'"
 			exit
 		fi
 
 	done
+}
+	if [[ "$answer3" == "yes" || "$answer3" == "Yes" ]]; then 
+		sleep 1
+		echo "Alright, our seed has developed into a sapling!"
+		sleep 1
+		echo "From now on, $title will grow taller and stronger, but it won't go through any new stages."
+		sleep 1
+		growth_loop
+	elif [[ "$answer3" == "no" || "$answer3" == "No" ]];then
+		sleep 1
+		echo "Alright, see you later neighbor!"
+		exit
+	else
+		echo "Please try again, and only use 'yes' or 'no'"
+		exit
+	fi
+
 
 	if [[ $(echo "$plant_height >= 35" | bc) == 1 ]]; then 
 		echo "It's day $day_count."
@@ -287,6 +286,9 @@ growth() {
 		fi
 	fi
 
+	if [[ $first_time == false ]]; then 
+		second_time_talk
+	fi	
 
 	if [[ $i == "3" ]]; then
 		(($i == 0))

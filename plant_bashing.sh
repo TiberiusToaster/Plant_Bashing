@@ -47,6 +47,154 @@ w=0 #used to hold a random weather condition in the growth loop
 
 #play again while loop
 while [[ $is_active == true ]]; do
+	#Dave explains how fast the time moves
+	if [[ $first_time == true ]]; then #if its the player first time, statement happens
+		if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then #if the answer variable from the first interaction is "yes" or "Yes" the statement below happens 
+			sleep 1
+			echo "Alright just dig a good sized hole and plant this seed."
+			sleep 1
+			echo "Good work!"
+			sleep 1
+			echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
+			sleep 1
+			echo "Our days can take as long as your seconds or minutes."
+			sleep 1
+			echo "Do you want to wait 2 days?"
+			read answer2
+		elif [[ "$answer" == "no" || "$answer" == "No" ]];then #if the answer variable from the first interaction is "no" or "No" the statement below happens 
+			sleep 1
+			echo "Alright, see you later neighbor!"
+			exit
+			#"exit" stops running the game
+		else #"else" means that if anything other than the specified values above were true, the stuff below happens
+			echo "Please try again, and only use 'yes' or 'no'"
+			exit
+		fi
+	fi	
+
+	#text interaction that goes over germination
+	if [[ $first_time == true ]]; then
+		if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
+			sleep 1
+			echo "Alright, our seed has germinated overnight!"
+			sleep 1
+			echo "Germination is the 2nd stage of our plant."
+			sleep 1
+			echo "Would you like to name your plant?"
+			read plant_answer
+		elif [[ "$answer2" == "no" || "$answer2" == "No" ]]; then
+			echo "Alright, see you later neighbor!"	
+			exit
+		else
+			echo "Please try again, and only use 'yes' or 'no'"
+			exit	
+		fi
+
+		#the user gets to name the plant when bash reads the user's "title" input
+		if [[ "$plant_answer" == "yes" || "$plant_answer" == "Yes" ]]; then 
+			sleep 1
+			echo "What would you like to name your plant?"
+			read title 
+			sleep 1
+			echo "Ok, it's name is $title"
+			sleep 1
+			echo "Do you want to wait 2 days for $title to grow?"
+			read answer3
+		elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
+			title=${default_names[$i]} #chooses a name in the array based off of the value of "i"
+			((i++)) # the i variable increases by one everytime the user chooses not to choose a name. This cycles through preset names for future playthroughs
+			sleep 1
+			echo "Ok, I'll name it $title"
+			sleep 1
+			echo "Do you want to wait 2 days for $title to grow?"
+			read answer3
+		fi
+	fi
+
+	#Growth happens based on instructions from ms6. These instruction can be found near the top of my script
+	#The growth function is called whne specific weathers happen in growth_loop
+	growth() {
+		#using bc here so I can use decimal numbers 
+		plant_height=$(echo "$plant_height + 1.5" | bc) #increase height by 1.5
+		plant_leaves=$(echo "$plant_leaves + 2 + 2.5 * $growth_rate" | bc) #increase by 2 and 2.5 times the growth_rate
+	}
+	growth_loop() {
+	while (( $(echo "$plant_height < 35" | bc -l) )); do
+		echo "Do you want to wait another day?"
+		read answer4
+		if [[ "$answer4" == "yes" || "$answer4" == "Yes" || -z "$answer4" ]]; then 
+			weather=$((RANDOM % ${#weather_array[@]})) #takes a random value from weather_array and assigns it to a variable
+			w=${weather_array[$weather]}
+
+			#assorted weathers 
+			if [[ "$w" == "Rainy" ]]; then
+				growth_rate=$(echo "$growth_rate + 2"| bc)
+			fi
+
+			if [[ "$w" == "Sunny" ]]; then
+				growth
+				growth_rate=$(echo "$growth_rate + 2"| bc)
+			fi
+
+			if [[ "$w" == "Overcast" ]]; then
+				growth
+			fi
+
+			if [[ "$w" == "Windstorm" ]]; then
+				growth_rate=$(echo "$growth_rate - 2"| bc)
+				plant_leaves=$(echo "$plant_leaves - 3"| bc)
+				((winstorms_survived += 1))
+			fi
+
+			if [[ "$w" == "Foggy" ]]; then
+				growth_rate=$(echo "$growth_rate - 1"| bc)
+			fi
+
+			echo "Weather today: $w"
+			#sleep 1
+			echo "It's day "$day_count", $title is $plant_height cm tall, and has $plant_leaves leaves!"
+			#sleep 1
+			echo "So far you've survived $winstorms_survived windstorms."
+			#sleep 1
+			echo "Your current growth rate is $growth_rate."
+			((day_count += 1))
+		fi
+
+		if [[ "$answer4" == "no" || "$answer4" == "No" ]];then
+			sleep 1
+			echo "Alright, see you later neighbor!"
+			exit
+		elif [[ "$answer4" == "yes" || "$answer4" == "Yes" || -z "$answer4" ]];then
+			echo " "
+		else
+			echo "Please try again, and only use 'yes' or 'no'"
+			exit
+		fi
+
+	done
+	}
+	#Dave says that the plant is a sapling now
+	#this is below the growth loop so it can call growth_loop
+	#when this was above it, the statement didn't think growth_loop existed yet
+	if [[ "$answer3" == "yes" || "$answer3" == "Yes" ]]; then 
+		sleep 1
+		echo "Alright, our seed has developed into a sapling!"
+		sleep 1
+		echo "From now on, $title will grow taller and stronger, but it won't go through any new stages."
+		sleep 1
+		growth_loop
+	elif [[ "$answer3" == "no" || "$answer3" == "No" ]];then
+		sleep 1
+		echo "Alright, see you later neighbor!"
+		exit
+	else
+		echo "Please try again, and only use 'yes' or 'no'"
+		exit
+	fi
+
+
+
+
 	#function is called on each play after first playthrough
 	#gameplay is pretty much the same but naming is done near the start instead of after germination
 	second_time_talk() {
@@ -123,150 +271,9 @@ while [[ $is_active == true ]]; do
 	fi
 	}
 
-	#Dave explains how fast the time moves
-	if [[ $first_time == true ]]; then #if its the player first time, statement happens
-		if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then #if the answer variable from the first interaction is "yes" or "Yes" the statement below happens 
-			sleep 1
-			echo "Alright just dig a good sized hole and plant this seed."
-			sleep 1
-			echo "Good work!"
-			sleep 1
-			echo "I know you've only just moved here but I'm sure you've realized time moves much faster here."
-			sleep 1
-			echo "Our days can take as long as your seconds or minutes."
-			sleep 1
-			echo "Do you want to wait 2 days?"
-			read answer2
-		elif [[ "$answer" == "no" || "$answer" == "No" ]];then #if the answer variable from the first interaction is "no" or "No" the statement below happens 
-			sleep 1
-			echo "Alright, see you later neighbor!"
-			exit
-			#"exit" stops running the game
-		else #"else" means that if anything other than the specified values above were true, the stuff below happens
-			echo "Please try again, and only use 'yes' or 'no'"
-			exit
-		fi
-	fi	
+	
 
-	#text interaction that goes over germination
-	if [[ $first_time == true ]]; then
-		if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
-			sleep 1
-			echo "Alright, our seed has germinated overnight!"
-			sleep 1
-			echo "Germination is the 2nd stage of our plant."
-			sleep 1
-			echo "Would you like to name your plant?"
-			read plant_answer
-		elif [[ "$answer2" == "no" || "$answer2" == "No" ]]; then
-			echo "Alright, see you later neighbor!"	
-			exit
-		else
-			echo "Please try again, and only use 'yes' or 'no'"
-			exit	
-		fi
 
-		#the user gets to name the plant when bash reads the user's "title" input
-		if [[ "$plant_answer" == "yes" || "$plant_answer" == "Yes" ]]; then 
-			sleep 1
-			echo "What would you like to name your plant?"
-			read title 
-			sleep 1
-			echo "Ok, it's name is $title"
-			sleep 1
-			echo "Do you want to wait 2 days for $title to grow?"
-			read answer3
-		elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
-			title=${default_names[$i]} #chooses a name in the array based off of the value of "i"
-			((i++)) # the i variable increases by one everytime the user chooses not to choose a name. This cycles through preset names for future playthroughs
-			sleep 1
-			echo "Ok, I'll name it $title"
-			sleep 1
-			echo "Do you want to wait 2 days for $title to grow?"
-			read answer3
-		fi
-	fi
-
-#Growth happens based on instructions from ms6. These instruction can be found near the top of my script
-#The growth function is called whne specific weathers happen in growth_loop
-growth() {
-	#using bc here so I can use decimal numbers 
-	plant_height=$(echo "$plant_height + 1.5" | bc) #increase height by 1.5
-	plant_leaves=$(echo "$plant_leaves + 2 + 2.5 * $growth_rate" | bc) #increase by 2 and 2.5 times the growth_rate
-}
-growth_loop() {
-	while (( $(echo "$plant_height < 35" | bc -l) )); do
-		echo "Do you want to wait another day?"
-		read answer4
-		if [[ "$answer4" == "yes" || "$answer4" == "Yes" || -z "$answer4" ]]; then 
-			weather=$((RANDOM % ${#weather_array[@]})) #takes a random value from weather_array and assigns it to a variable
-			w=${weather_array[$weather]}
-
-			#assorted weathers 
-			if [[ "$w" == "Rainy" ]]; then
-				growth_rate=$(echo "$growth_rate + 2"| bc)
-			fi
-
-			if [[ "$w" == "Sunny" ]]; then
-				growth
-				growth_rate=$(echo "$growth_rate + 2"| bc)
-			fi
-
-			if [[ "$w" == "Overcast" ]]; then
-				growth
-			fi
-
-			if [[ "$w" == "Windstorm" ]]; then
-				growth_rate=$(echo "$growth_rate - 2"| bc)
-				plant_leaves=$(echo "$plant_leaves - 3"| bc)
-				((winstorms_survived += 1))
-			fi
-
-			if [[ "$w" == "Foggy" ]]; then
-				growth_rate=$(echo "$growth_rate - 1"| bc)
-			fi
-
-			echo "Weather today: $w"
-			#sleep 1
-			echo "It's day "$day_count", $title is $plant_height cm tall, and has $plant_leaves leaves!"
-			#sleep 1
-			echo "So far you've survived $winstorms_survived windstorms."
-			#sleep 1
-			echo "Your current growth rate is $growth_rate."
-			((day_count += 1))
-		fi
-
-		if [[ "$answer4" == "no" || "$answer4" == "No" ]];then
-			sleep 1
-			echo "Alright, see you later neighbor!"
-			exit
-		elif [[ "$answer4" == "yes" || "$answer4" == "Yes" || -z "$answer4" ]];then
-			echo " "
-		else
-			echo "Please try again, and only use 'yes' or 'no'"
-			exit
-		fi
-
-	done
-}
-	#Dave says that the plant is a sapling now
-	#this is below the growth loop so it can call growth_loop
-	#when this was above it, the statement didn't think growth_loop existed yet
-	if [[ "$answer3" == "yes" || "$answer3" == "Yes" ]]; then 
-		sleep 1
-		echo "Alright, our seed has developed into a sapling!"
-		sleep 1
-		echo "From now on, $title will grow taller and stronger, but it won't go through any new stages."
-		sleep 1
-		growth_loop
-	elif [[ "$answer3" == "no" || "$answer3" == "No" ]];then
-		sleep 1
-		echo "Alright, see you later neighbor!"
-		exit
-	else
-		echo "Please try again, and only use 'yes' or 'no'"
-		exit
-	fi
 
 	#final exchange between Dave and the user 
 	#the user chooses if they want to play again

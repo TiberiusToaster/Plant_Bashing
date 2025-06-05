@@ -32,18 +32,23 @@ w=0 #used to hold a random weather condition in the growth loop
 
 
 	#intro sequence
-	echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?"
+	echo "Hey neighbor I'm Dave, Welcome to my lawn. What is your name?" 
+	#"echo" will read the follwing message in quotes and it will write it for the user to see
 	read name
-	sleep 2
+	#"read" will collect any data the user inputs to be used in a later variable 
+	sleep 2 
+	# "sleep" pauses anything from happening for the specified number of seconds
 	echo "Ok $name, do you want to help me grow a plant."
+	# name varible holds the player's name that they typed in
 	echo "please type 'yes' or 'no'"
-	read answer
+	read answer #holds response for another text interaction
 
 
 
 #play again while loop
 while [[ $is_active == true ]]; do
-
+	#function is called on each play after first playthrough
+	#gameplay is pretty much the same but naming is done near the start instead of after germination
 	second_time_talk() {
 	if [[ $first_time == false ]]; then
 		echo "Hey again neighbor! Do you want to help me grow a plant?"
@@ -118,9 +123,9 @@ while [[ $is_active == true ]]; do
 	fi
 	}
 
-
-	if [[ $first_time == true ]]; then
-		if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then 
+	#Dave explains how fast the time moves
+	if [[ $first_time == true ]]; then #if its the player first time, statement happens
+		if [[ "$answer" == "yes" || "$answer" == "Yes" ]]; then #if the answer variable from the first interaction is "yes" or "Yes" the statement below happens 
 			sleep 1
 			echo "Alright just dig a good sized hole and plant this seed."
 			sleep 1
@@ -132,17 +137,18 @@ while [[ $is_active == true ]]; do
 			sleep 1
 			echo "Do you want to wait 2 days?"
 			read answer2
-		elif [[ "$answer" == "no" || "$answer" == "No" ]];then
+		elif [[ "$answer" == "no" || "$answer" == "No" ]];then #if the answer variable from the first interaction is "no" or "No" the statement below happens 
 			sleep 1
 			echo "Alright, see you later neighbor!"
 			exit
-		else
+			#"exit" stops running the game
+		else #"else" means that if anything other than the specified values above were true, the stuff below happens
 			echo "Please try again, and only use 'yes' or 'no'"
 			exit
 		fi
 	fi	
 
-
+	#text interaction that goes over germination
 	if [[ $first_time == true ]]; then
 		if [[ "$answer2" == "yes" || "$answer2" == "Yes" ]]; then 
 			sleep 1
@@ -160,18 +166,19 @@ while [[ $is_active == true ]]; do
 			exit	
 		fi
 
+		#the user gets to name the plant when bash reads the user's "title" input
 		if [[ "$plant_answer" == "yes" || "$plant_answer" == "Yes" ]]; then 
 			sleep 1
 			echo "What would you like to name your plant?"
-			read title
+			read title 
 			sleep 1
 			echo "Ok, it's name is $title"
 			sleep 1
 			echo "Do you want to wait 2 days for $title to grow?"
 			read answer3
 		elif [[ "$plant_answer" == "no" || "$plant_answer" == "No" ]];then
-			title=${default_names[$i]}
-			((i++)) 
+			title=${default_names[$i]} #chooses a name in the array based off of the value of "i"
+			((i++)) # the i variable increases by one everytime the user chooses not to choose a name. This cycles through preset names for future playthroughs
 			sleep 1
 			echo "Ok, I'll name it $title"
 			sleep 1
@@ -179,18 +186,23 @@ while [[ $is_active == true ]]; do
 			read answer3
 		fi
 	fi
+
+#Growth happens based on instructions from ms6. These instruction can be found near the top of my script
+#The growth function is called whne specific weathers happen in growth_loop
 growth() {
-	plant_height=$(echo "$plant_height + 1.5" | bc)
-	plant_leaves=$(echo "$plant_leaves + 2 + 2.5 * $growth_rate" | bc)
+	#using bc here so I can use decimal numbers 
+	plant_height=$(echo "$plant_height + 1.5" | bc) #increase height by 1.5
+	plant_leaves=$(echo "$plant_leaves + 2 + 2.5 * $growth_rate" | bc) #increase by 2 and 2.5 times the growth_rate
 }
 growth_loop() {
 	while (( $(echo "$plant_height < 35" | bc -l) )); do
 		echo "Do you want to wait another day?"
 		read answer4
 		if [[ "$answer4" == "yes" || "$answer4" == "Yes" || -z "$answer4" ]]; then 
-			weather=$((RANDOM % ${#weather_array[@]}))
+			weather=$((RANDOM % ${#weather_array[@]})) #takes a random value from weather_array and assigns it to a variable
 			w=${weather_array[$weather]}
 
+			#assorted weathers 
 			if [[ "$w" == "Rainy" ]]; then
 				growth_rate=$(echo "$growth_rate + 2"| bc)
 			fi
@@ -237,6 +249,9 @@ growth_loop() {
 
 	done
 }
+	#Dave says that the plant is a sapling now
+	#this is below the growth loop so it can call growth_loop
+	#when this was above it, the statement didn't think growth_loop existed yet
 	if [[ "$answer3" == "yes" || "$answer3" == "Yes" ]]; then 
 		sleep 1
 		echo "Alright, our seed has developed into a sapling!"
@@ -253,8 +268,9 @@ growth_loop() {
 		exit
 	fi
 
-
-	if [[ $(echo "$plant_height >= 35" | bc) == 1 ]]; then 
+	#final exchange between Dave and the user 
+	#the user chooses if they want to play again
+	if [[ $(echo "$plant_height >= 35" | bc) == 1 ]]; then #if the plants height is equal to or above 35 (cm), the stuff below happens 
 		echo "It's day $day_count."
 		sleep 2
 		echo "$title is now $plant_height cm high and has $plant_leaves leaves."
@@ -269,11 +285,16 @@ growth_loop() {
 		read playanswer
 		sleep 3
 
+		#The user has chosen to play again
+		#variables are reset but first time is set to false
+		#sleep timers are to make it seem like a bunch of loading is going on
 		if [[ "$playanswer" == "yes" || "$playanswer" == "Yes" ]]; then
 			sleep 1
 			echo "Reloading game..."
 			plant_height=0
 			plant_leaves=0
+			growth_rate=0
+			winstorms_survived=0
 			day_count=5
 			sleep 2
 			first_time=false
@@ -286,11 +307,13 @@ growth_loop() {
 		fi
 	fi
 
+	#if it is not the users first time playing, change some interactions
 	if [[ $first_time == false ]]; then 
 		second_time_talk
 	fi	
 
-	if [[ $i == "3" ]]; then
+	#reset the preset names loop if the final name has been said
+	if [[ $i == "3" ]]; then #could change the limit to the length of the array instead of hardcoded "3" if number of preset names changes in future
 		(($i == 0))
 	fi
 done

@@ -192,9 +192,6 @@ while [[ $is_active == true ]]; do
 		exit
 	fi
 
-
-
-
 	#function is called on each play after first playthrough
 	#gameplay is pretty much the same but naming is done near the start instead of after germination
 	second_time_talk() {
@@ -271,9 +268,40 @@ while [[ $is_active == true ]]; do
 	fi
 	}
 
-	
+	#This function was made becasue during the growth loop if the user keeps spamming enters when the final exchange happen, the game would break
+	#If new lines were made while that statement was active, the "read playanswer" would overflow with inputs it didn't understand
+	#Calling to this fucntion instead of having it bunched up gives the user more time to stop pressing enter and let the game play out
+	play_again() {
+	sleep 1
+	echo "I think I can take care of it from here neighbor."
+	sleep 1
+	echo "Thanks for the help, see you later!"
+	sleep 1
+	echo "Would you like to play again? (Yes/No)"
+	read playanswer
+	sleep 3
 
+	#The user has chosen to play again
+	#variables are reset but first time is set to false
+	#sleep timers are to make it seem like a bunch of loading is going on
+	if [[ "$playanswer" == "yes" || "$playanswer" == "Yes" ]]; then
+		sleep 1
+		echo "Reloading game..."
+		plant_height=0
+		plant_leaves=0
+		growth_rate=0
+		winstorms_survived=0
+		day_count=5
+		sleep 2
+		first_time=false
+		is_active=true
 
+	else
+		sleep 1
+		echo "Game closed"
+		exit
+	fi
+	}
 
 	#final exchange between Dave and the user 
 	#the user chooses if they want to play again
@@ -283,35 +311,7 @@ while [[ $is_active == true ]]; do
 		echo "$title is now $plant_height cm high and has $plant_leaves leaves."
 		sleep 2
 		echo "$title has survived $winstorms_survived windstorms."
-		sleep 1
-		echo "I think I can take care of it from here neighbor."
-		sleep 1
-		echo "Thanks for the help, see you later!"
-		sleep 1
-		echo "Would you like to play again? (Yes/No)"
-		read playanswer
-		sleep 3
-
-		#The user has chosen to play again
-		#variables are reset but first time is set to false
-		#sleep timers are to make it seem like a bunch of loading is going on
-		if [[ "$playanswer" == "yes" || "$playanswer" == "Yes" ]]; then
-			sleep 1
-			echo "Reloading game..."
-			plant_height=0
-			plant_leaves=0
-			growth_rate=0
-			winstorms_survived=0
-			day_count=5
-			sleep 2
-			first_time=false
-			is_active=true
-
-		else
-			sleep 1
-			echo "Game closed"
-			exit
-		fi
+		play_again
 	fi
 
 	#if it is not the users first time playing, change some interactions
